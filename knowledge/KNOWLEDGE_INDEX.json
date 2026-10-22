@@ -1,6 +1,6 @@
 {
   "project": "Ferixdi AI Voice Mentor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "language": "ru",
   "documents": [
     {
@@ -36,6 +36,11 @@
     {
       "path": "knowledge/SECURITY_AND_ROADMAP.md",
       "type": "roadmap",
+      "status": "draft"
+    },
+    {
+      "path": "knowledge/PRACTICE_FIRST_PROTOCOL.md",
+      "type": "practice_first_mentoring_protocol",
       "status": "draft"
     }
   ],
