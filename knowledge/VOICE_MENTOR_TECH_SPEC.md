@@ -44,3 +44,14 @@
 - При слабом результате ученика диагностирует ролик и данные.
 - Доступ закрыт для неавторизованных пользователей.
 - API-ключ не появляется в browser bundle, git history или логах.
+
+
+## MVP implementation added (2026-10-22)
+
+The repository now contains a minimal Node/Express + browser WebRTC prototype:
+- `server.js`: server-only OpenAI key, short-lived Realtime client secret, course system instructions, basic rate limit, optional shared access code and health check.
+- `public/index.html`: one main action button, dark minimalist UI, microphone and remote audio handling.
+- `render.yaml`: Render Web Service blueprint.
+- `.env.example`: placeholder names only; no actual key.
+
+The prototype currently injects the system prompt, practice-first protocol and method into the Realtime session. It does not yet perform semantic retrieval over every lesson, individual student authentication, persistent progress, or production-grade cost controls. It must be tested with a real API project before being shared with students.
