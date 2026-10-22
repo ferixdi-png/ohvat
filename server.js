@@ -224,40 +224,90 @@ app.post("/api/knowledge-search", checkOrigin, knowledgeRateLimit, verifyAccess,
 app.get("/api/health", (_req, res) => res.json({ ok: true, service: "ferixdi-ai-voice-mentor" }));
 
 app.post("/api/podcast-answer", checkOrigin, knowledgeRateLimit, verifyAccess, async (req, res) => {
-  const query = String(req.body?.query || "").slice(0, 1200).toLowerCase().replace(/ё/g, "е");
+  const originalQuery = String(req.body?.query || "").trim().slice(0, 1200);
+  const query = originalQuery.toLowerCase().replace(/ё/g, "е");
   const markdown = await readKnowledge("PODCAST_INTERVIEW_FINAL.md", 30000);
   const sections = markdown.split(/(?=^## \d+\.)/m);
-  const pairs = sections.map(section => {
-    const headingMatch = section.match(/^##\s*\d+\.\s*(.+)$/m);
+  const pairs = sections.map((section, index) => {
+    const headingMatch = section.match(/^##\s*(\d+)\.\s*(.+)$/m);
     const hostMatch = section.match(/\*\*Ведущий:\*\*\s*([\s\S]*?)(?=\n\s*\n\*\*Наставник:\*\*)/i);
     const mentorMatch = section.match(/\*\*Наставник:\*\*\s*([\s\S]*?)(?=\n\s*\n## |\n\s*\nПринципы голоса|$)/i);
-    return hostMatch && mentorMatch ? {
-      title: headingMatch ? headingMatch[1].trim() : "",
+    return headingMatch && hostMatch && mentorMatch ? {
+      index: Number(headingMatch[1]) || index,
+      title: headingMatch[2].trim(),
       question: hostMatch[1].trim(),
       answer: mentorMatch[1].trim()
     } : null;
   }).filter(Boolean);
-  const stop = new Set(["это","как","что","где","когда","почему","если","или","для","про","мне","меня","мой","моя","мои","мы","вы","они","уже","есть","нет","можно","нужно","надо","сделать","делать","этот","эта","эти","там","тут","его","ее","вот","так","быть","будет","был","была","были","какие","какой","какая"]);
-  const tokens = value => [...new Set((value.match(/[a-zа-я0-9]{3,}/giu) || []).filter(word => !stop.has(word)))];
+
+  if (!originalQuery || !pairs.length) return res.json({ matched: false });
+
+  // The model chooses only a question ID by meaning. The approved answer always comes from the script.
+  if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== "sk-replace-me") {
+    try {
+      const questionList = pairs.map(pair => String(pair.index) + ". ТЕМА: " + pair.title + "\nВОПРОС ВЕДУЩЕГО: " + pair.question).join("\n\n");
+      const response = await fetch("https://api.openai.com/v1/responses", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + process.env.OPENAI_API_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          store: false,
+          temperature: 0,
+          max_output_tokens: 80,
+          instructions: "Ты — классификатор вопросов для записи подкаста на русском языке. Сопоставь вопрос пользователя по СМЫСЛУ с одной темой из списка. Пользователь может говорить естественно, перефразировать или задавать уточняющий вопрос. Выбери наиболее подходящую тему, даже если совпадения слов нет. Не отвечай на вопрос и не придумывай тему. Верни JSON строго вида {\"index\": номер_темы}. Если вопрос явно не относится ни к одной теме, верни {\"index\": null}.",
+          input: "ВОПРОС ПОЛЬЗОВАТЕЛЯ:\n" + originalQuery + "\n\nДОПУСТИМЫЕ ТЕМЫ И ВОПРОСЫ:\n" + questionList,
+          text: { format: { type: "json_object" } }
+        })
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const outputText = (data.output || [])
+          .flatMap(item => item.content || [])
+          .filter(item => item.type === "output_text")
+          .map(item => item.text || "")
+          .join("");
+        const parsed = JSON.parse(outputText);
+        const selected = pairs.find(pair => pair.index === Number(parsed.index));
+        if (selected) {
+          res.set("Cache-Control", "no-store");
+          return res.json({ matched: true, question: selected.question, answer: selected.answer, matchMethod: "semantic" });
+        }
+        if (parsed.index === null) {
+          res.set("Cache-Control", "no-store");
+          return res.json({ matched: false });
+        }
+      } else {
+        console.error("Podcast semantic match failed:", response.status, (await response.text()).slice(0, 500));
+      }
+    } catch (error) {
+      console.error("Podcast semantic match error:", error?.message || error);
+    }
+  }
+
+  // Deterministic fallback if semantic classification is temporarily unavailable.
+  const stop = new Set(["это","как","что","где","когда","почему","если","или","для","про","мне","меня","мой","моя","мои","мы","вы","они","уже","есть","нет","можно","нужно","надо","сделать","делать","этот","эта","эти","там","тут","его","ее","вот","так","быть","будет","был","была","были","какие","какой","какая","расскажи","скажи","можешь","вообще","тогда","значит","например","скажем","допустим","пожалуйста"]);
+  const tokens = value => [...new Set((String(value || "").toLowerCase().replace(/ё/g, "е").match(/[a-zа-я0-9]{3,}/giu) || []).filter(word => !stop.has(word)))];
   const queryTokens = tokens(query);
-  if (!queryTokens.length || !pairs.length) return res.json({ matched: false });
+  if (!queryTokens.length) return res.json({ matched: false });
   const ranked = pairs.map(pair => {
-    // Match against the section title as well as the host's spoken question.
-    // This allows short questions such as "Какие результаты?" to match section 2.
-    const questionTokens = tokens((pair.title + " " + pair.question).toLowerCase().replace(/ё/g, "е"));
-    const hits = queryTokens.filter(token => questionTokens.some(word => word === token || (token.length >= 5 && word.length >= 5 && (token.includes(word) || word.includes(token)))));
-    const score = hits.length / Math.max(1, Math.min(queryTokens.length, questionTokens.length));
-    const exactTitleMatch = Boolean(pair.title) && queryTokens.every(token =>
-      tokens(pair.title.toLowerCase().replace(/ё/g, "е")).some(word => word === token || (token.length >= 5 && word.length >= 5 && (token.includes(word) || word.includes(token))))
-    );
-    return { ...pair, hits: hits.length, score, exactTitleMatch };
-  }).sort((a, b) => Number(b.exactTitleMatch) - Number(a.exactTitleMatch) || b.score - a.score || b.hits - a.hits);
+    const questionTokens = tokens(pair.title + " " + pair.question);
+    const hits = queryTokens.filter(token => questionTokens.some(word =>
+      word === token || (token.length >= 4 && word.length >= 4 && (token.includes(word) || word.includes(token)))
+    ));
+    const score = hits.length / Math.max(1, queryTokens.length);
+    return { ...pair, hits: hits.length, score };
+  }).sort((a, b) => b.score - a.score || b.hits - a.hits);
   const best = ranked[0], second = ranked[1];
-  const shortSpecificMatch = best && queryTokens.length <= 2 && best.hits >= 1 &&
-    /(результат|ученик|подписчик|обучени|покупк|промпт|охват|иде|регулярност|монетизац|начать|с нуля)/i.test(query);
-  if (!best || (!shortSpecificMatch && (best.hits < 2 || best.score < 0.28 || (second && best.score - second.score < 0.06 && best.hits < 4)))) return res.json({ matched: false });
+  const specificTerms = /(результат|ученик|подписчик|обучени|покупк|промпт|охват|иде|регулярност|монетизац|начать|с нуля|время|срок|гаранти|нейросет|chatgpt|бесплатно|первые ролики|просмотр|урок|материал|заработ|деньг|аккаунт)/i;
+  const shortSpecificMatch = best && queryTokens.length <= 3 && best.hits >= 1 && specificTerms.test(query);
+  if (!best || (!shortSpecificMatch && (best.hits < 2 || best.score < 0.22 || (second && best.score - second.score < 0.04 && best.hits < 4)))) {
+    return res.json({ matched: false });
+  }
   res.set("Cache-Control", "no-store");
-  return res.json({ matched: true, question: best.question, answer: best.answer });
+  return res.json({ matched: true, question: best.question, answer: best.answer, matchMethod: "keyword-fallback" });
 });
 
 app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (req, res) => {
