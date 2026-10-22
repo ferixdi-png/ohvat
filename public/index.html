@@ -61,7 +61,7 @@
     let pc=null,stream=null,channel=null,connecting=false,connected=false;
     const handledToolCalls=new Set();
     let accessCode=sessionStorage.getItem("ferixdi_mentor_access_code")||"";
-    function status(text){statusText.textContent=text}
+    function status(text){}
     function error(text){errorEl.textContent=text;errorEl.hidden=!text}
     function sendEvent(event){if(channel?.readyState==="open")channel.send(JSON.stringify(event))}
     async function stop(){
