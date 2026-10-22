@@ -1,0 +1,56 @@
+{
+  "project": "Ferixdi AI Voice Mentor",
+  "version": "0.1.0",
+  "language": "ru",
+  "documents": [
+    {
+      "path": "knowledge/SYSTEM_PROMPT_RU.md",
+      "type": "system_prompt",
+      "status": "draft"
+    },
+    {
+      "path": "knowledge/METHOD_AND_WORKFLOW.md",
+      "type": "methodology",
+      "status": "draft"
+    },
+    {
+      "path": "knowledge/MENTORING_AND_DISCIPLINE.md",
+      "type": "mentoring_policy",
+      "status": "draft"
+    },
+    {
+      "path": "knowledge/CURRICULUM_MAP.md",
+      "type": "curriculum_map",
+      "status": "partial"
+    },
+    {
+      "path": "knowledge/GOOGLE_FLOW_OMNI_NANO_BANANA.md",
+      "type": "tool_reference",
+      "status": "needs_official_verification"
+    },
+    {
+      "path": "knowledge/VOICE_MENTOR_TECH_SPEC.md",
+      "type": "technical_spec",
+      "status": "draft"
+    },
+    {
+      "path": "knowledge/SECURITY_AND_ROADMAP.md",
+      "type": "roadmap",
+      "status": "draft"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Ferixdi AI Academy",
+      "url": "https://ferixdi-png.github.io/ferixdi-ai-academy/"
+    },
+    {
+      "name": "Source repository",
+      "url": "https://github.com/ferixdi-png/ferixdi-ai-academy"
+    }
+  ],
+  "notes": [
+    "Starter pack, not a full import of all lessons/media.",
+    "Do not store secrets or private student data in a public repository."
+  ]
+}
