@@ -11,6 +11,7 @@ const PUBLIC_DIR = path.join(__dirname, "public");
 const KNOWLEDGE_DIR = path.join(__dirname, "knowledge");
 
 app.disable("x-powered-by");
+app.set("trust proxy", 1);
 app.use(express.json({ limit: "32kb" }));
 
 const requestWindows = new Map();
