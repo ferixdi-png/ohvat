@@ -150,7 +150,7 @@
 
         const offer = await pc.createOffer();
         await pc.setLocalDescription(offer);
-        const sdpResponse = await fetch("https://api.openai.com/v1/realtime?model=gpt-realtime-1.5", {
+        const sdpResponse = await fetch("https://api.openai.com/v1/realtime?model=gpt-realtime-2.1", {
           method: "POST", body: offer.sdp,
           headers: { Authorization: "Bearer " + tokenData.client_secret, "Content-Type": "application/sdp" }
         });
