@@ -1,6 +1,6 @@
 {
   "project": "Ferixdi AI Voice Mentor",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "language": "ru",
   "documents": [
     {
@@ -52,6 +52,11 @@
       "path": "knowledge/SOURCE_IMPORT_STATUS.md",
       "type": "source_import_completeness",
       "status": "active"
+    },
+    {
+      "path": "knowledge/source-lessons/lesson-content-source.js",
+      "type": "source_lesson_templates",
+      "status": "imported_raw_templates_pending_markdown_normalization"
     }
   ],
   "sources": [
