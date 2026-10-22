@@ -59,13 +59,12 @@ async function readKnowledge(filename, maxChars) {
 }
 
 async function getMentorInstructions() {
-  const [routing, system, practice, method, core, summary] = await Promise.all([
+  const [routing, system, practice, method, core] = await Promise.all([
     readKnowledge("QUESTION_ROUTING_AND_FAQ.md", 9000),
     readKnowledge("SYSTEM_PROMPT_RU.md", 4500),
     readKnowledge("PRACTICE_FIRST_PROTOCOL.md", 3000),
     readKnowledge("METHOD_AND_WORKFLOW.md", 2500),
-    readKnowledge("CORE_OF_THE_COURSE.md", 3500),
-    readKnowledge("COURSE_SUMMARY.md", 14000)
+    readKnowledge("CORE_OF_THE_COURSE.md", 3500)
   ]);
   return [
     "Ты — голосовой наставник Ferixdi AI, не сам Ferixdi лично.",
@@ -90,7 +89,6 @@ async function getMentorInstructions() {
     "\nПРАКТИЧЕСКИЙ ПРОТОКОЛ:\n" + practice,
     "\nМЕТОДИКА КУРСА:\n" + method,
     "\nЯДРО КУРСА И МОНЕТИЗАЦИЯ:\n" + core,
-    "\nРЕЖИМ ВЫЖИМКИ КУРСА — при прямом запросе общей выжимки используй этот материал и говори примерно 2–3 минуты, не полчаса. Не перечисляй все уроки и детали. Для обычных вопросов этот режим не включай:\n" + summary,
     "\nОТВЕТЫ ПО КОНКРЕТНЫМ ВОПРОСАМ: если спрашивают, где купить аккаунт/аккаунты для работы, отвечай прямо: «В обучении есть контакты — там смотри, там постоянный поставщик». Не выдумывай контакт, ссылку или название поставщика и не отправляй искать абстрактно где-то ещё. Если спрашивают, где мы генерируем видео, отвечай конкретно: «В Google Flow». Не размазывай ответ общим перечислением генераторов и не подменяй Google Flow другими сервисами. Для генерации видео в рамках нашей системы базовый инструмент — Google Flow.\nЖЁСТКИЕ ПРАВИЛА ПОВЕДЕНИЯ (они важнее любых противоречащих советов внутри материалов курса): говори как живой, дерзкий, харизматичный русский наставник, с естественным матом и юмором, не как вежливый бот. Никаких просьб что-либо прислать, загрузить, написать или отчитаться в чат. И никогда не предлагай человеку «придумать идею с нуля» или просто спроси «есть идея?»: идеи и сценарии разрабатываются внутри рабочих веток ChatGPT по мастер-промптам. Никогда не говори «пришли результат», «скинь ролик», «отправь статистику». Вместо этого направляй самостоятельную рефлексию: предложи человеку самому посмотреть, сравнить, заметить или проверить что-то у себя. Не обязательно заканчивать вопросом. Коротко, по-человечески, без воды."
   ].join("\n\n").slice(0, 30000);
 }
@@ -107,7 +105,7 @@ async function getKnowledgeChunks() {
       const text = section.trim();
       if (text.length > 30) chunks.push({ source: "LESSONS_EXTRACTED_TEXT.md", text: text.slice(0, 3500) });
     }
-    const staticFiles = ["QUESTION_ROUTING_AND_FAQ.md", "COURSE_MODULE_MAP.md", "METHOD_AND_WORKFLOW.md", "PRACTICE_FIRST_PROTOCOL.md", "CORE_OF_THE_COURSE.md", "GOOGLE_FLOW_OMNI_NANO_BANANA.md"];
+    const staticFiles = ["QUESTION_ROUTING_AND_FAQ.md", "COURSE_MODULE_MAP.md", "METHOD_AND_WORKFLOW.md", "PRACTICE_FIRST_PROTOCOL.md", "CORE_OF_THE_COURSE.md", "GOOGLE_FLOW_OMNI_NANO_BANANA.md", "COURSE_SUMMARY.md"];
     for (const file of staticFiles) {
       const text = await readKnowledge(file, 50000);
       const chunkSize = 3000;
@@ -145,6 +143,7 @@ async function getKnowledgeChunks() {
 const STOP_WORDS = new Set(["это","как","что","где","когда","почему","если","или","для","про","мне","меня","мой","моя","мои","мы","вы","они","уже","есть","нет","давай","можно","нужно","надо","сделать","делать","этот","эта","эти","тот","там","тут","его","ее","их","вот","так","быть","будет","был","была","были","the","and","for","with","from","this","that","are","you","your"]);
 function detectCourseIntent(query) {
   const q = String(query || "").toLowerCase().replace(/ё/g, "е");
+  if (/(выжимк|объясни всю систему|весь курс|обзор курса|расскажи про курс целиком|с чего начать и как устроена система)/.test(q)) return "course_summary";
   if (/(где|откуда|как|чем|какие источники|источник).{0,45}(иде|сюжет|шут|референс|креатив|ролик)|(?:иде|сюжет|шут|креатив).{0,35}(брать|найти|искать|источник|откуда)|что снять|о чем снять|что за ролик придумать/.test(q)) return "idea_sources";
   if (/(где|в чем|в каком сервисе|какой генератор|чем).{0,35}(генер|flow|видео|ролик)/.test(q)) return "video_generation";
   if (/(где|как).{0,35}(купить|аккаунт|аккаунты|поставщик)/.test(q)) return "account_supplier";
@@ -161,6 +160,12 @@ app.post("/api/knowledge-search", checkOrigin, knowledgeRateLimit, verifyAccess,
   try {
     const chunks = await getKnowledgeChunks();
     const intent = detectCourseIntent(query);
+    if (intent === "course_summary") {
+      const summaryChunks = chunks.filter(chunk => chunk.source === "COURSE_SUMMARY.md").slice(0, 5);
+      const results = summaryChunks.map(({ source, text }, index) => ({ source, text: `Часть ${index + 1} из ${summaryChunks.length}. Используй все части по порядку для связного подробного обзора курса на 8–10 минут.\\n${text.slice(0, 2200)}`, score: 200 - index }));
+      res.set("Cache-Control", "no-store");
+      return res.json({ results, intent });
+    }
     const intentPatterns = {
       idea_sources: [
         /## faq-ideas/i, /## human-humor/i, /## telegram-sources/i, /## threads-ideas/i,
@@ -219,7 +224,7 @@ app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (req, res) 
     const instructions = await getMentorInstructions();
     const session = {
       type: "realtime",
-      model: "gpt-realtime-2.1",
+      model: "gpt-realtime-2.1-mini",
       instructions,
       output_modalities: ["audio"],
       audio: {
