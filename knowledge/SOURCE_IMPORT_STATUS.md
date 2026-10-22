@@ -21,11 +21,12 @@
 - Добавлен `knowledge/source-lessons/lesson-content-source.js`: 47 KB исходных шаблонов содержимого уроков из `assets/js/app.js`.
 - Это исходный HTML/template-код, а не готовая нормализованная база для retrieval. Следующий этап — извлечь текст каждого урока в Markdown-фрагменты с ID урока, заголовком и ссылкой на источник.
 - Создан MVP голосового приложения: `server.js`, `public/index.html`, `package.json`, `.env.example`, `.gitignore`, `render.yaml`.
+- Добавлен `knowledge/QUESTION_ROUTING_AND_FAQ.md`: типовые вопросы учеников сопоставлены с ID уроков, мастер-промптами, точными ответами по аккаунтам/Google Flow и маршрутом эскалации к Ferixdi.
 - Локальная работа через `.env` поддержана пакетом dotenv. Настоящий ключ в GitHub не добавлялся.
 
 
 ## Голосовой MVP и retrieval
 - Добавлен `knowledge/source-lessons/LESSONS_EXTRACTED_TEXT.md`: автоматически извлечённый поисковый текст 131 урока/практики из исходных HTML-шаблонов.
 - Серверный endpoint `POST /api/knowledge-search` выполняет базовый keyword search по текстам уроков, методике и чанкам TXT-промптов.
-- Голосовой интерфейс ждёт транскрипцию речи, запрашивает релевантные фрагменты, добавляет их в контекст Realtime и только после этого просит модель ответить. Это keyword retrieval, не embeddings/semantic search.
+- Голосовая сессия вызывает function tool `search_course_knowledge`; браузер отправляет запрос на серверный `/api/knowledge-search`, получает релевантные фрагменты и передаёт их в Realtime через `function_call_output`. После этого модель формирует ответ с опорой на найденные материалы. Это keyword retrieval, не embeddings/semantic search.
 - Полнота: извлечённый текст может терять содержимое динамических HTML-блоков. Для спорных деталей следует сверяться с исходным курсом и исходными промптами.
