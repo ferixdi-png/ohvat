@@ -11,6 +11,20 @@
 - `knowledge/VOICE_MENTOR_TECH_SPEC.md` — архитектура приложения на OpenAI API.
 - `knowledge/SECURITY_AND_ROADMAP.md` — доступ студентов, приватность и план реализации.
 
+## Импортированные оригинальные промпты
+
+В `knowledge/course-prompts/` перенесены оригинальные файлы из исходного репозитория Ferixdi AI:
+- `video-factory-v40.txt`
+- `photorealism-engine.txt`
+- `voice-performance.txt`
+- `video-recreation-v32.txt`
+- `forensic-twin-test.txt`
+- `viral-scenario-hook.txt`
+- `permanent-characters.txt`
+- `apify-trend-scan.txt`
+- `omni-10plus.txt`
+- `ultra-video-clean.txt`
+
 ## Важно
 Это стартовый структурированный пакет, а не утверждение, что все 131 урок уже перенесены целиком. Для полной версии нужно последовательно импортировать исходные уроки, PDF, промпты, видео и изображения из исходной базы Ferixdi AI. Не помещайте API-ключи и закрытые материалы в публичный frontend.
 
