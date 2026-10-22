@@ -113,5 +113,5 @@ app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (_req, res)
 });
 
 app.use(express.static(PUBLIC_DIR, { extensions: ["html"] }));
-app.get("*", (_req, res) => res.sendFile(path.join(PUBLIC_DIR, "index.html")));
+app.get(/.*/, (_req, res) => res.sendFile(path.join(PUBLIC_DIR, "index.html")));
 app.listen(PORT, () => console.log("Ferixdi AI Voice Mentor listening on port " + PORT));
