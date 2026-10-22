@@ -1,42 +1,46 @@
-# Ferixdi AI — Voice Mentor
+# Ferixdi AI Voice Mentor
 
-Рабочая база знаний и спецификация голосового AI-наставника для студентов Ferixdi AI.
+Minimal voice-first web app for the Ferixdi AI mentor. The interface is deliberately simple: one button to start or end a live voice conversation.
 
-## Что здесь лежит
-- `knowledge/SYSTEM_PROMPT_RU.md` — роль, голос и правила ответа наставника.
-- `knowledge/METHOD_AND_WORKFLOW.md` — производственный цикл AI-Reels.
-- `knowledge/MENTORING_AND_DISCIPLINE.md` — работа с провалами, мотивацией и анализом.
-- `knowledge/PRACTICE_FIRST_PROTOCOL.md` — обязательный режим: сначала практика, вопросы о сделанном, диагностика роликов и копирование проверенных креативов.
-- `knowledge/COURSE_MODULE_MAP.md` — карта 16 модулей и 131 записи уроков/практик из текущей структуры курса.
-- `knowledge/SOURCE_IMPORT_STATUS.md` — прозрачный статус переноса; большие исходники могут требовать повторного импорта частями.
-- `knowledge/CURRICULUM_MAP.md` — карта направлений курса и источников.
-- `knowledge/GOOGLE_FLOW_OMNI_NANO_BANANA.md` — рабочая справка по инструментам с явным разделением подтверждённого и требующего проверки.
-- `knowledge/VOICE_MENTOR_TECH_SPEC.md` — архитектура приложения на OpenAI API.
-- `knowledge/SECURITY_AND_ROADMAP.md` — доступ студентов, приватность и план реализации.
+## Current MVP
 
-## Импортированные оригинальные промпты
+- Node.js + Express backend.
+- Browser microphone/audio via WebRTC and OpenAI Realtime.
+- Short-lived client secret created on the server; the main OpenAI API key is never sent to the browser.
+- Mentor instructions are loaded from the repository knowledge files at runtime.
+- Optional shared access code (MENTOR_ACCESS_CODE), origin restriction (ALLOWED_ORIGIN), basic per-IP rate limit and health endpoint.
+- Single-button interface with a restrained dark theme.
 
-В `knowledge/course-prompts/` перенесены оригинальные файлы из исходного репозитория Ferixdi AI:
-- `video-factory-v40.txt`
-- `photorealism-engine.txt`
-- `voice-performance.txt`
-- `video-recreation-v32.txt`
-- `forensic-twin-test.txt`
-- `viral-scenario-hook.txt`
-- `permanent-characters.txt`
-- `apify-trend-scan.txt`
-- `omni-10plus.txt`
-- `ultra-video-clean.txt`
+## Run locally
 
-## Важно
-Это стартовый структурированный пакет, а не утверждение, что все 131 урок уже перенесены целиком. Для полной версии нужно последовательно импортировать исходные уроки, PDF, промпты, видео и изображения из исходной базы Ferixdi AI. Не помещайте API-ключи и закрытые материалы в публичный frontend.
+1. Install Node.js 22 or newer.
+2. Copy .env.example to .env.
+3. Put your real key in .env as OPENAI_API_KEY=... Never commit .env.
+4. For a public deployment, set a strong MENTOR_ACCESS_CODE.
+5. Run:
 
-## Источники проекта
-- Академия: https://ferixdi-png.github.io/ferixdi-ai-academy/
-- Исходный репозиторий материалов: https://github.com/ferixdi-png/ferixdi-ai-academy
-- Telegram: https://t.me/ferixdi_ai
-- Чат создателей: https://t.me/ai_neiro_chat
+    npm install
+    npm start
 
+6. Open http://localhost:3000 and allow microphone access.
 
-## OpenAI API key
-Ключ пока не вставлять в файлы репозитория. Когда будет создан backend, добавлять его в секретные переменные окружения хостинга под именем `OPENAI_API_KEY`. Локально использовать `.env` (который не коммитится); в GitHub хранить только `.env.example` без настоящего секрета.
+## Deploy to Render
+
+1. Create a Web Service from this GitHub repository or use render.yaml as a Blueprint.
+2. Set environment variables in Render: OPENAI_API_KEY (secret), MENTOR_ACCESS_CODE (strong shared code), ALLOWED_ORIGIN (optional exact deployed URL).
+3. Deploy and inspect /api/health.
+4. Test one short conversation before sharing the URL.
+
+## Important
+
+- A working Realtime API project and billing are required. Model availability depends on the OpenAI project.
+- Never put the API key in HTML, frontend JavaScript, a public repository or a screenshot.
+- If MENTOR_ACCESS_CODE is blank, the endpoint is public. Do not share a public URL widely before access control and spend limits are configured.
+- The shared access code is only an MVP gate, not individual student authentication. For a paid course rollout, implement student accounts/allowlisting, durable rate limits and spend monitoring.
+- Full semantic retrieval across all course lessons is not implemented yet. The app injects the core system prompt, practice protocol and methodology into the voice session. Lesson-level retrieval and citations are the next stage.
+- The app has not yet been live-tested with your OpenAI API key. If session creation fails, verify billing and Realtime model access for the project.
+- If session creation fails, verify the model is enabled for your OpenAI project.
+
+## Knowledge files
+
+See knowledge/SYSTEM_PROMPT_RU.md, knowledge/PRACTICE_FIRST_PROTOCOL.md, knowledge/METHOD_AND_WORKFLOW.md and knowledge/COURSE_MODULE_MAP.md.
