@@ -1,6 +1,6 @@
 {
   "project": "Ferixdi AI Voice Mentor",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "language": "ru",
   "documents": [
     {
@@ -62,6 +62,11 @@
       "path": "knowledge/source-lessons/LESSONS_EXTRACTED_TEXT.md",
       "type": "lesson_text_retrieval_corpus",
       "status": "extracted_131_lesson_entries"
+    },
+    {
+      "path": "knowledge/CORE_OF_THE_COURSE.md",
+      "type": "course_core_and_monetization",
+      "status": "draft"
     }
   ],
   "sources": [
@@ -76,6 +81,8 @@
   ],
   "notes": [
     "Starter pack, not a full import of all lessons/media.",
-    "Do not store secrets or private student data in a public repository."
+    "Do not store secrets or private student data in a public repository.",
+    "CORE_OF_THE_COURSE.md defines the practical cycle from AI-Reels creation through analytics to audience funnels and monetization.",
+    "Extracted lesson text is a partial retrieval corpus; dynamic lesson blocks and non-text media still require review."
   ]
 }
