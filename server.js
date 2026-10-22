@@ -48,10 +48,11 @@ async function readKnowledge(filename, maxChars) {
 }
 
 async function getMentorInstructions() {
-  const [system, practice, method] = await Promise.all([
+  const [system, practice, method, core] = await Promise.all([
     readKnowledge("SYSTEM_PROMPT_RU.md", 9000),
     readKnowledge("PRACTICE_FIRST_PROTOCOL.md", 6500),
-    readKnowledge("METHOD_AND_WORKFLOW.md", 4500)
+    readKnowledge("METHOD_AND_WORKFLOW.md", 4500),
+    readKnowledge("CORE_OF_THE_COURSE.md", 8500)
   ]);
   return [
     "Ты — голосовой наставник Ferixdi AI, не сам Ferixdi лично.",
@@ -79,7 +80,7 @@ async function getKnowledgeChunks() {
       const text = section.trim();
       if (text.length > 30) chunks.push({ source: "LESSONS_EXTRACTED_TEXT.md", text: text.slice(0, 3500) });
     }
-    const staticFiles = ["COURSE_MODULE_MAP.md", "METHOD_AND_WORKFLOW.md", "PRACTICE_FIRST_PROTOCOL.md"];
+    const staticFiles = ["COURSE_MODULE_MAP.md", "METHOD_AND_WORKFLOW.md", "PRACTICE_FIRST_PROTOCOL.md", "CORE_OF_THE_COURSE.md"];
     for (const file of staticFiles) {
       const text = await readKnowledge(file, 30000);
       if (text) chunks.push({ source: file, text: text.slice(0, 3500) });
