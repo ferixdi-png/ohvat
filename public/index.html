@@ -21,7 +21,7 @@
     body.speaking .orb { transform:scale(1.055); }
     body.connected .halo { border-color:#dfff003c; transform:scale(1.06); }
     .status { min-height:22px; color:#c5c8cc; font-size:14px; }
-    .action { appearance:none; border:0; border-radius:999px; min-width:210px; padding:17px 27px; background:var(--fg); color:#080a0b; font:700 15px/1.2 inherit; cursor:pointer; transition:transform .15s,background .15s; }
+    .action { appearance:none; border:0; border-radius:999px; min-width:210px; padding:17px 27px; background:var(--fg); color:#080a0b; font:inherit; font-weight:700; font-size:15px; cursor:pointer; transition:transform .15s,background .15s; }
     .action:hover { transform:translateY(-1px); background:var(--acid); }
     .action:disabled { cursor:wait; opacity:.6; transform:none; }
     body.connected .action { background:var(--red); color:white; }
@@ -125,10 +125,10 @@
               });
               const result = await found.json().catch(() => ({}));
               const context = (result.results || []).map((item, index) =>
-                "[" + (index + 1) + "] Источник: " + item.source + "\\n" + item.text
-              ).join("\\n\\n---\\n\\n");
+                "[" + (index + 1) + "] Источник: " + item.source + "\n" + item.text
+              ).join("\n\n---\n\n");
               const note = context
-                ? "РЕЛЕВАНТНЫЕ МАТЕРИАЛЫ КУРСА (используй только если они отвечают на вопрос; не зачитывай технические пути):\\n" + context
+                ? "РЕЛЕВАНТНЫЕ МАТЕРИАЛЫ КУРСА (используй только если они отвечают на вопрос; не зачитывай технические пути):\n" + context
                 : "Поиск не нашёл достаточно релевантного фрагмента курса. Не выдумывай ответ от имени курса; если нужно, попроси уточнить вопрос.";
               sendEvent({
                 type: "conversation.item.create",
