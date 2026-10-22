@@ -66,6 +66,79 @@ async function getMentorInstructions() {
   ].join("\n\n").slice(0, 24000);
 }
 
+
+let knowledgeChunksPromise;
+async function getKnowledgeChunks() {
+  if (knowledgeChunksPromise) return knowledgeChunksPromise;
+  knowledgeChunksPromise = (async () => {
+    const chunks = [];
+    const lessonText = await readKnowledge("source-lessons/LESSONS_EXTRACTED_TEXT.md", 1000000);
+    const lessonSections = lessonText.split(/(?=^## )/m);
+    for (const section of lessonSections) {
+      const text = section.trim();
+      if (text.length > 30) chunks.push({ source: "LESSONS_EXTRACTED_TEXT.md", text: text.slice(0, 3500) });
+    }
+    const staticFiles = ["COURSE_MODULE_MAP.md", "METHOD_AND_WORKFLOW.md", "PRACTICE_FIRST_PROTOCOL.md"];
+    for (const file of staticFiles) {
+      const text = await readKnowledge(file, 30000);
+      if (text) chunks.push({ source: file, text: text.slice(0, 3500) });
+    }
+    async function walk(dir, relative = "") {
+      let entries = [];
+      try { entries = await fs.readdir(dir, { withFileTypes: true }); } catch { return; }
+      for (const entry of entries) {
+        const rel = path.join(relative, entry.name);
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) await walk(full, rel);
+        else if (entry.isFile() && /\\.(txt|md)$/i.test(entry.name)) {
+          let text = "";
+          try { text = await fs.readFile(full, "utf8"); } catch { continue; }
+          const blocks = text.split(/\\n(?=#{1,3} )/);
+          let current = "";
+          for (const block of blocks) {
+            if ((current + "\\n\\n" + block).length > 3000 && current.trim()) {
+              chunks.push({ source: rel, text: current.trim().slice(0, 3000) });
+              current = block;
+            } else current += (current ? "\\n\\n" : "") + block;
+          }
+          if (current.trim()) chunks.push({ source: rel, text: current.trim().slice(0, 3000) });
+        }
+      }
+    }
+    await walk(path.join(KNOWLEDGE_DIR, "course-prompts"), "course-prompts");
+    return chunks;
+  })();
+  return knowledgeChunksPromise;
+}
+
+const STOP_WORDS = new Set(["это","как","что","где","когда","почему","если","или","для","про","мне","меня","мой","моя","мои","мы","вы","они","уже","есть","нет","давай","можно","нужно","надо","сделать","делать","этот","эта","эти","тот","там","тут","его","ее","их","вот","так","быть","будет","был","была","были","the","and","for","with","from","this","that","are","you","your"]);
+function terms(text) {
+  return [...new Set((String(text || "").toLowerCase().match(/[a-zа-яё0-9]{3,}/giu) || []).filter(t => !STOP_WORDS.has(t)))];
+}
+app.post("/api/knowledge-search", checkOrigin, rateLimit, verifyAccess, async (req, res) => {
+  const query = String(req.body?.query || "").slice(0, 1200);
+  const queryTerms = terms(query);
+  if (!queryTerms.length) return res.json({ results: [] });
+  try {
+    const chunks = await getKnowledgeChunks();
+    const scored = chunks.map(chunk => {
+      const lower = chunk.text.toLowerCase();
+      let score = 0;
+      for (const term of queryTerms) {
+        const escaped = term.replace(/[.*+?^{}()|[\\]\\\\]/g, "\\\\app.get("/api/health", (_req, res) => res.json({ ok: true, service: "ferixdi-ai-voice-mentor" }));");
+        const matches = lower.match(new RegExp(escaped, "giu"));
+        if (matches) score += Math.min(matches.length, 5) * (term.length >= 7 ? 2 : 1);
+      }
+      return { ...chunk, score };
+    }).filter(x => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+    res.set("Cache-Control", "no-store");
+    res.json({ results: scored.map(({ source, text, score }) => ({ source, text: text.slice(0, 2200), score })) });
+  } catch (error) {
+    console.error("Knowledge search failed:", error?.message || error);
+    res.status(500).json({ error: "Не получилось найти материал курса." });
+  }
+});
+
 app.get("/api/health", (_req, res) => res.json({ ok: true, service: "ferixdi-ai-voice-mentor" }));
 
 app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (_req, res) => {
@@ -86,7 +159,7 @@ app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (_req, res)
           output_modalities: ["audio"],
           audio: {
             input: {
-              turn_detection: { type: "server_vad", threshold: 0.55, silence_duration_ms: 550 },
+              turn_detection: { type: "server_vad", create_response: false, interrupt_response: true, threshold: 0.55, silence_duration_ms: 550 },
               transcription: { model: "gpt-4o-mini-transcribe", language: "ru" }
             },
             output: { voice: "marin" }
