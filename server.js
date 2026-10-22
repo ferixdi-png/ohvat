@@ -150,7 +150,7 @@ app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (_req, res)
         expires_after: { anchor: "created_at", seconds: 600 },
         session: {
           type: "realtime",
-          model: process.env.OPENAI_REALTIME_MODEL || "gpt-realtime-1.5",
+          model: process.env.OPENAI_REALTIME_MODEL || "gpt-realtime-2.1",
           instructions,
           output_modalities: ["audio"],
           audio: {
