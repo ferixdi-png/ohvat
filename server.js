@@ -12,6 +12,7 @@ const KNOWLEDGE_DIR = path.join(__dirname, "knowledge");
 
 app.disable("x-powered-by");
 app.set("trust proxy", 1);
+app.use(express.text({ type: ["application/sdp"], limit: "1mb" }));
 app.use(express.json({ limit: "32kb" }));
 
 const requestWindows = new Map();
@@ -140,45 +141,50 @@ app.post("/api/knowledge-search", checkOrigin, rateLimit, verifyAccess, async (r
 
 app.get("/api/health", (_req, res) => res.json({ ok: true, service: "ferixdi-ai-voice-mentor" }));
 
-app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (_req, res) => {
+app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (req, res) => {
   if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === "sk-replace-me") {
     return res.status(503).json({ error: "На сервере ещё не настроен OPENAI_API_KEY." });
   }
+  const offerSdp = typeof req.body === "string" ? req.body : "";
+  if (!offerSdp.startsWith("v=")) {
+    return res.status(400).json({ error: "Не получил SDP-предложение от браузера. Обнови страницу и попробуй ещё раз." });
+  }
   try {
     const instructions = await getMentorInstructions();
-    const response = await fetch("https://api.openai.com/v1/realtime/client_secrets", {
+    const session = {
+      type: "realtime",
+      model: "gpt-realtime-2.1",
+      instructions,
+      output_modalities: ["audio"],
+      audio: {
+        input: {
+          turn_detection: { type: "server_vad", create_response: false, interrupt_response: true, threshold: 0.55, silence_duration_ms: 550 },
+          transcription: { model: "gpt-4o-mini-transcribe", language: "ru" }
+        },
+        output: { voice: "marin" }
+      },
+      max_output_tokens: 700
+    };
+    const form = new FormData();
+    form.set("sdp", new Blob([offerSdp], { type: "application/sdp" }), "offer.sdp");
+    form.set("session", new Blob([JSON.stringify(session)], { type: "application/json" }), "session.json");
+    const response = await fetch("https://api.openai.com/v1/realtime/calls", {
       method: "POST",
-      headers: { Authorization: "Bearer " + process.env.OPENAI_API_KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        expires_after: { anchor: "created_at", seconds: 600 },
-        session: {
-          type: "realtime",
-          model: process.env.OPENAI_REALTIME_MODEL || "gpt-realtime-2.1",
-          instructions,
-          output_modalities: ["audio"],
-          audio: {
-            input: {
-              turn_detection: { type: "server_vad", create_response: false, interrupt_response: true, threshold: 0.55, silence_duration_ms: 550 },
-              transcription: { model: "gpt-4o-mini-transcribe", language: "ru" }
-            },
-            output: { voice: "marin" }
-          },
-          max_output_tokens: 700
-        }
-      })
+      headers: { Authorization: "Bearer " + process.env.OPENAI_API_KEY },
+      body: form
     });
-    const data = await response.json().catch(() => ({}));
+    const answerSdp = await response.text();
     if (!response.ok) {
-      console.error("OpenAI session creation failed:", response.status, JSON.stringify(data).slice(0, 1500));
-      return res.status(502).json({ error: "OpenAI не смог открыть голосовую сессию. Проверь API-доступ, модель и баланс." });
-    }
-    const value = data?.value || data?.client_secret?.value;
-    if (!value) {
-      console.error("Unexpected client secret response:", JSON.stringify(data).slice(0, 1000));
-      return res.status(502).json({ error: "OpenAI вернул неожиданный ответ при создании сессии." });
+      console.error("OpenAI Realtime call failed:", response.status, answerSdp.slice(0, 1500));
+      let message = "OpenAI не смог открыть голосовую сессию. Проверь API-доступ, модель и баланс.";
+      try {
+        const parsed = JSON.parse(answerSdp);
+        if (parsed?.error?.message) message = parsed.error.message;
+      } catch {}
+      return res.status(502).json({ error: message });
     }
     res.set("Cache-Control", "no-store");
-    res.json({ client_secret: value });
+    res.type("application/sdp").send(answerSdp);
   } catch (error) {
     console.error("Session setup error:", error?.message || error);
     res.status(500).json({ error: "Не получилось подключиться. Попробуй ещё раз." });
