@@ -109,16 +109,8 @@
                 method: "POST", headers, body: JSON.stringify({ query: transcript })
               });
               const result = await found.json().catch(() => ({}));
-              const context = (result.results || []).map((item, index) =>
-                "[" + (index + 1) + "] Источник: " + item.source + "\n" + item.text
-              ).join("\n\n---\n\n");
-              const note = context
-                ? "РЕЛЕВАНТНЫЕ МАТЕРИАЛЫ КУРСА (используй только если они отвечают на вопрос; не зачитывай технические пути):\n" + context
-                : "Поиск не нашёл достаточно релевантного фрагмента курса. Не выдумывай ответ от имени курса; если нужно, попроси уточнить вопрос.";
-              sendEvent({
-                type: "conversation.item.create",
-                item: { type: "message", role: "developer", content: [{ type: "input_text", text: note }] }
-              });
+              // Realtime conversation items do not support the "developer" role.
+              // Course guidance is included in the session instructions; do not inject hidden messages here.
             } catch (e) {
               console.warn("Knowledge lookup failed", e);
             }
