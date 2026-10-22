@@ -6,7 +6,7 @@ Minimal voice-first web app for the Ferixdi AI mentor. The interface is delibera
 
 - Node.js + Express backend.
 - Browser microphone/audio via WebRTC and OpenAI Realtime.
-- Short-lived client secret created on the server; the main OpenAI API key is never sent to the browser.
+- WebRTC SDP offer is sent to the app server, which creates the Realtime call through the GA `/v1/realtime/calls` endpoint; the main OpenAI API key never reaches the browser.
 - Mentor instructions are loaded from the repository knowledge files at runtime.
 - Keyword retrieval over extracted lesson text and prompt files is connected to each voice turn.
 - Optional shared access code (MENTOR_ACCESS_CODE), origin restriction (ALLOWED_ORIGIN), basic per-IP rate limit and health endpoint.
@@ -39,7 +39,7 @@ Minimal voice-first web app for the Ferixdi AI mentor. The interface is delibera
 - If MENTOR_ACCESS_CODE is blank, the endpoint is public. Do not share a public URL widely before access control and spend limits are configured.
 - The shared access code is only an MVP gate, not individual student authentication. For a paid course rollout, implement student accounts/allowlisting, durable rate limits and spend monitoring.
 - Retrieval currently uses keyword matching over extracted lesson text and prompt chunks, not embeddings or a semantic search index. The extracted lesson text may omit content hidden in dynamic HTML helper blocks; this is documented in knowledge/SOURCE_IMPORT_STATUS.md.
-- The app has not yet been live-tested with your OpenAI API key. If session creation fails, verify billing and Realtime model access for the project.
+- The app has not yet been live-tested end-to-end with the deployed OpenAI project. If call creation fails, inspect the Render logs and verify billing and Realtime model access.
 - If session creation fails, verify the model is enabled for your OpenAI project.
 
 ## Knowledge files
