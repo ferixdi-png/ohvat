@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a0b">
+  <title>Ferixdi AI — голосовой наставник</title>
+  <style>
+    :root { color-scheme: dark; --bg:#080a0b; --fg:#fff; --red:#c41f48; --acid:#dfff00; --muted:#9ba0a6; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; min-height:100%; background:var(--bg); color:var(--fg); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    body { min-height:100svh; display:grid; place-items:center; padding:24px; }
+    main { width:min(100%,520px); display:flex; flex-direction:column; align-items:center; text-align:center; gap:24px; }
+    .brand { font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); }
+    h1 { margin:0; font-size:clamp(27px,6vw,42px); letter-spacing:-.045em; line-height:1.08; font-weight:750; }
+    .sub { margin:0; max-width:340px; color:#a9adb3; font-size:15px; line-height:1.55; }
+    .orb-wrap { position:relative; display:grid; place-items:center; margin:10px 0 2px; }
+    .halo { position:absolute; width:228px; height:228px; border-radius:50%; border:1px solid #24282c; transition:transform .4s,border-color .4s; }
+    .orb { width:174px; height:174px; border-radius:50%; background:radial-gradient(circle at 35% 28%,#e83c64 0,#c41f48 24%,#68142a 52%,#151012 76%); box-shadow:0 0 70px #c41f4825,inset 0 0 26px #ff8fa52b; border:1px solid #ffffff18; transition:all .35s ease; }
+    body.connected .orb { background:radial-gradient(circle at 35% 28%,#dfff00 0,#8fa900 23%,#3a4611 52%,#101208 76%); box-shadow:0 0 85px #dfff0030,inset 0 0 28px #efffa12b; }
+    body.speaking .orb { transform:scale(1.055); }
+    body.connected .halo { border-color:#dfff003c; transform:scale(1.06); }
+    .status { min-height:22px; color:#c5c8cc; font-size:14px; }
+    .action { appearance:none; border:0; border-radius:999px; min-width:210px; padding:17px 27px; background:var(--fg); color:#080a0b; font:700 15px/1.2 inherit; cursor:pointer; transition:transform .15s,background .15s; }
+    .action:hover { transform:translateY(-1px); background:var(--acid); }
+    .action:disabled { cursor:wait; opacity:.6; transform:none; }
+    body.connected .action { background:var(--red); color:white; }
+    body.connected .action:hover { background:#e02b58; }
+    .error { color:#ff8ca4; max-width:360px; font-size:13px; line-height:1.5; }
+    .foot { color:#626970; font-size:11px; letter-spacing:.02em; margin-top:14px; }
+    audio { display:none; }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { transition:none!important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">FERIXDI AI</div>
+    <h1>Ну что, погнали<br>ебать алгоритмы?</h1>
+    <p class="sub">Один голосовой наставник. Без лекций и воды — разбираем твои ролики и ищем, что реально цепляет людей.</p>
+    <div class="orb-wrap" aria-hidden="true"><div class="halo"></div><div class="orb"></div></div>
+    <div class="status" id="status" role="status" aria-live="polite">Готов к разговору</div>
+    <button class="action" id="talk">Начать разговор</button>
+    <div class="error" id="error" hidden></div>
+    <div class="foot">Микрофон включается только после твоего нажатия</div>
+    <audio id="remoteAudio" autoplay playsinline></audio>
+  </main>
+  <script type="module">
+    const button = document.querySelector("#talk");
+    const statusEl = document.querySelector("#status");
+    const errorEl = document.querySelector("#error");
+    const audioEl = document.querySelector("#remoteAudio");
+    let pc = null, stream = null, channel = null, connecting = false, connected = false;
+    let accessCode = sessionStorage.getItem("ferixdi_mentor_access_code") || "";
+
+    function status(text) { statusEl.textContent = text; }
+    function error(text) { errorEl.textContent = text; errorEl.hidden = !text; }
+    function sendEvent(event) { if (channel?.readyState === "open") channel.send(JSON.stringify(event)); }
+
+    async function stop() {
+      sendEvent({ type: "session.close" });
+      if (channel) { try { channel.close(); } catch {} }
+      if (pc) { try { pc.close(); } catch {} }
+      if (stream) stream.getTracks().forEach(track => track.stop());
+      pc = null; channel = null; stream = null; audioEl.srcObject = null;
+      document.body.classList.remove("connected", "speaking");
+      connected = false; connecting = false; button.disabled = false;
+      button.textContent = "Начать разговор"; status("Разговор завершён");
+    }
+
+    async function start() {
+      if (connecting) return;
+      connecting = true; button.disabled = true; error(""); status("Подключаюсь…");
+      try {
+        if (!window.isSecureContext && location.hostname !== "localhost") throw new Error("Для микрофона нужен HTTPS.");
+        if (!accessCode && !sessionStorage.getItem("ferixdi_access_prompted")) {
+          const code = prompt("Введи код доступа, если он у тебя есть. Если код не выдавали — оставь пустым.");
+          sessionStorage.setItem("ferixdi_access_prompted", "1");
+          accessCode = code || "";
+          if (accessCode) sessionStorage.setItem("ferixdi_mentor_access_code", accessCode);
+        }
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const tokenResponse = await fetch("/api/session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", ...(accessCode ? { "x-mentor-access-code": accessCode } : {}) },
+          body: "{}"
+        });
+        const tokenData = await tokenResponse.json().catch(() => ({}));
+        if (!tokenResponse.ok) {
+          if (tokenResponse.status === 401) {
+            sessionStorage.removeItem("ferixdi_mentor_access_code");
+            sessionStorage.removeItem("ferixdi_access_prompted");
+            accessCode = "";
+          }
+          throw new Error(tokenData.error || "Не удалось создать голосовую сессию.");
+        }
+
+        pc = new RTCPeerConnection();
+        pc.addTrack(stream.getAudioTracks()[0], stream);
+        pc.ontrack = event => { audioEl.srcObject = event.streams[0]; audioEl.play().catch(() => {}); };
+        pc.onconnectionstatechange = () => {
+          if (pc?.connectionState === "connected") {
+            connected = true; connecting = false; button.disabled = false;
+            document.body.classList.add("connected"); button.textContent = "Завершить разговор";
+            status("На связи. Говори — я слушаю."); error("");
+          }
+          if (pc && ["failed", "disconnected"].includes(pc.connectionState)) {
+            error("Связь прервалась. Попробуй подключиться ещё раз."); stop();
+          }
+        };
+        channel = pc.createDataChannel("oai-events");
+        channel.addEventListener("open", () => sendEvent({ type: "response.create", response: { output_modalities: ["audio"] } }));
+        channel.addEventListener("message", event => {
+          let data; try { data = JSON.parse(event.data); } catch { return; }
+          if (data.type === "input_audio_buffer.speech_started") { status("Слушаю…"); document.body.classList.remove("speaking"); }
+          if (data.type === "response.audio.started" || data.type === "output_audio_buffer.started") { status("Говорю…"); document.body.classList.add("speaking"); }
+          if (data.type === "response.audio.done" || data.type === "output_audio_buffer.stopped") { document.body.classList.remove("speaking"); status("На связи. Говори — я слушаю."); }
+          if (data.type === "error") error(data.error?.message || "Ошибка голосовой сессии.");
+        });
+
+        const offer = await pc.createOffer();
+        await pc.setLocalDescription(offer);
+        const sdpResponse = await fetch("https://api.openai.com/v1/realtime?model=gpt-realtime-1.5", {
+          method: "POST", body: offer.sdp,
+          headers: { Authorization: "Bearer " + tokenData.client_secret, "Content-Type": "application/sdp" }
+        });
+        if (!sdpResponse.ok) {
+          const details = await sdpResponse.text();
+          throw new Error("OpenAI не принял голосовое подключение. Проверь доступ к Realtime API и модель. " + details.slice(0, 180));
+        }
+        await pc.setRemoteDescription({ type: "answer", sdp: await sdpResponse.text() });
+        status("Почти на связи…");
+      } catch (e) {
+        await stop();
+        error(e?.name === "NotAllowedError" ? "Браузер не дал доступ к микрофону. Разреши микрофон в адресной строке и нажми ещё раз." : (e?.message || "Не удалось подключиться."));
+      } finally { connecting = false; button.disabled = false; }
+    }
+
+    button.addEventListener("click", async () => {
+      if (connected) { await stop(); return; }
+      if (!connecting) await start();
+    });
+    window.addEventListener("beforeunload", () => { stream?.getTracks().forEach(track => track.stop()); pc?.close(); });
+  </script>
+</body>
+</html>
