@@ -1,6 +1,6 @@
 {
   "project": "Ferixdi AI Voice Mentor",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "language": "ru",
   "documents": [
     {
@@ -42,6 +42,16 @@
       "path": "knowledge/PRACTICE_FIRST_PROTOCOL.md",
       "type": "practice_first_mentoring_protocol",
       "status": "draft"
+    },
+    {
+      "path": "knowledge/COURSE_MODULE_MAP.md",
+      "type": "course_structure_map",
+      "status": "imported_structure_only"
+    },
+    {
+      "path": "knowledge/SOURCE_IMPORT_STATUS.md",
+      "type": "source_import_completeness",
+      "status": "active"
     }
   ],
   "sources": [
