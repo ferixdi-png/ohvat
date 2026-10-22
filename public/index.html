@@ -98,7 +98,14 @@
           if(data.type==="conversation.item.input_audio_transcription.completed"){
             const transcript=String(data.transcript||"").trim();
             if(!transcript||!channel||channel.readyState!=="open")return;
-            sendEvent({type:"response.create",response:{output_modalities:["audio"]}});
+            try{
+              const response=await fetch("/api/podcast-answer",{method:"POST",headers:{"Content-Type":"application/json",...(accessCode?{"x-mentor-access-code":accessCode}:{})},body:JSON.stringify({query:transcript})});
+              const result=response.ok?await response.json():{matched:false};
+              const exactText=result.matched?result.answer:"В этом сценарии такого вопроса нет";
+              sendEvent({type:"response.create",response:{output_modalities:["audio"],instructions:"Ты озвучиваешь готовый текст для записи подкаста. Произнеси следующий текст ДОСЛОВНО, слово в слово. Ничего не добавляй, не сокращай, не перефразируй, не произноси никаких вступлений или комментариев.\n\n"+exactText}});
+            }catch{
+              sendEvent({type:"response.create",response:{output_modalities:["audio"],instructions:"Произнеси дословно: В этом сценарии такого вопроса нет"}});
+            }
           }
           if(data.type==="response.output_item.done"&&data.item?.type==="function_call"&&data.item?.name==="search_course_knowledge"){
             const callId=data.item.call_id;
