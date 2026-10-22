@@ -64,6 +64,11 @@
       "status": "extracted_131_lesson_entries"
     },
     {
+      "path": "knowledge/QUESTION_ROUTING_AND_FAQ.md",
+      "type": "student_question_routing_and_faq",
+      "status": "imported_and_connected_to_voice_retrieval"
+    },
+    {
       "path": "knowledge/CORE_OF_THE_COURSE.md",
       "type": "course_core_and_monetization",
       "status": "draft"
