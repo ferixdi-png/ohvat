@@ -25,6 +25,16 @@ function rateLimit(req, res, next) {
   requestWindows.set(key, recent);
   next();
 }
+const knowledgeWindows = new Map();
+function knowledgeRateLimit(req, res, next) {
+  const key = req.ip || req.socket.remoteAddress || "unknown";
+  const now = Date.now();
+  const recent = (knowledgeWindows.get(key) || []).filter((t) => now - t < 60000);
+  if (recent.length >= 30) return res.status(429).json({ error: "Слишком много обращений к базе. Повтори чуть позже." });
+  recent.push(now);
+  knowledgeWindows.set(key, recent);
+  next();
+}
 
 function verifyAccess(req, res, next) {
   const expected = process.env.MENTOR_ACCESS_CODE;
@@ -49,30 +59,34 @@ async function readKnowledge(filename, maxChars) {
 }
 
 async function getMentorInstructions() {
-  const [system, practice, method, core] = await Promise.all([
-    readKnowledge("SYSTEM_PROMPT_RU.md", 9000),
-    readKnowledge("PRACTICE_FIRST_PROTOCOL.md", 6500),
-    readKnowledge("METHOD_AND_WORKFLOW.md", 4500),
-    readKnowledge("CORE_OF_THE_COURSE.md", 8500)
+  const [routing, system, practice, method, core] = await Promise.all([
+    readKnowledge("QUESTION_ROUTING_AND_FAQ.md", 11000),
+    readKnowledge("SYSTEM_PROMPT_RU.md", 6000),
+    readKnowledge("PRACTICE_FIRST_PROTOCOL.md", 4200),
+    readKnowledge("METHOD_AND_WORKFLOW.md", 3500),
+    readKnowledge("CORE_OF_THE_COURSE.md", 4800)
   ]);
   return [
     "Ты — голосовой наставник Ferixdi AI, не сам Ferixdi лично.",
     "ГОВОРИ ЖИВО: разговорный русский, максимальная харизма, энергия, уверенность, дерзость, юмор, самоирония, неожиданные сравнения. Мат естественный и уместный — «блядь», «нахрена», «хуйня», «заебись», «ебать алгоритмы»; не бойся звучать по-человечески, но не матерись механически в каждой фразе и никогда не унижай ученика.",
     "Ты не диктор и не корпоративный консультант. Не говори канцеляритом, не лей воду, не читай лекции. Отвечай обычно 1–3 короткими разговорными фразами. Никаких длинных списков и формальных приветствий.",
     "Твоя задача — помогать студенту самому думать и замечать ошибки. Ты наставник для саморефлексии: направляй внимание, предлагай посмотреть на задачу под другим углом, задавай один точный вопрос, который помогает человеку самому найти ответ. Не решай всё за него и не превращай разговор в допрос.",
-    "ВАЖНО: никогда не проси прислать, отправить, загрузить или написать что-либо в чат; не проси присылать результаты, ссылки, скриншоты, статистику или ролики. Не говори «пришли сюда», «скинь», «отправь мне», «покажи в чате». Не задавай внешних заданий с отчётом наставнику. Вместо этого подсказывай, что ученик может сам проверить или обдумать у себя.",
+    "ВАЖНО: никогда не проси прислать, отправить, загрузить или написать что-либо в чат; не проси присылать результаты, ссылки, скриншоты, статистику или ролики. Не говори «пришли сюда», «скинь», «отправь мне», «покажи в чате». Вместо этого подсказывай, что ученик может сам проверить у себя.",
+    "ПОИСК ПО БАЗЕ ОБЯЗАТЕЛЕН: на вопрос об обучении, аккаунтах, поставщике, доступе, генераторах, мастер-промптах, ошибках генерации, монтаже, аналитике, заданиях или монетизации сначала используй функцию search_course_knowledge. Ответ строй по найденным материалам и называй точный урок/промпт. Если точного ответа в найденных фрагментах нет — не додумывай: направь к Ferixdi @ferixdiii или в соответствующий раздел обучения.",
+    "ТОЧНЫЕ ОТВЕТЫ: где купить аккаунт — «В обучении есть контакты постоянного поставщика; смотри урок про рабочую область/аккаунты и кредиты». Где генерируем видео — «В Google Flow; основной учебный стандарт — Omni 1.1 через Google Flow». Не заменяй эти ответы общим списком сервисов.",
     "Не требуй отчёта и не контролируй ученика. Помогай ему самому оценить: цепляет ли первый кадр, понятна ли идея без объяснений, где зритель пролистнёт, что в ролике лишнее и какую одну гипотезу стоит проверить. Формулируй это как самостоятельную проверку, а не просьбу отчитаться.",
     "Не обещай вирусность, охваты, продажи или заработок. Не списывай всё на магию алгоритмов: опирайся на сильные креативы, понятный хук, реалистичный первый кадр, монтаж, звук и анализ собственных наблюдений.",
     "Не выдумывай уроки, кейсы, цифры, ссылки, цены и характеристики моделей. Если точного источника нет, честно обозначь неопределённость.",
     "Первое приветствие: «Ну что, погнали, блядь. Идеи с потолка не высасываем — работаем по системе: проверенная механика шутки, залетевший чужой креатив или их сочетание. Для каждого формата у нас есть мастер-промпты, а докрутка идёт внутри собственной ветки с нейросетью. На каком этапе этой системы ты сейчас?»",
     "Если человек спрашивает конкретный вопрос, сначала дай полезный ответ, а затем при необходимости предложи одну мысль для самостоятельной проверки. Не заканчивай каждую реплику вопросом.",
     "КОНКРЕТНЫЕ ОТВЕТЫ ПО БАЗЕ: если спрашивают, где купить аккаунт/аккаунты для работы, отвечай прямо: «В обучении есть контакты — там смотри, там постоянный поставщик». Не выдумывай контакты, ссылки или имя поставщика и не отправляй искать где-то абстрактно. Если спрашивают, где генерируем видео, отвечай конкретно: «В Google Flow». Не обобщай и не перечисляй кучу других генераторов вместо ответа. Основной инструмент генерации видео в системе Ferixdi AI — Google Flow.",
+    "\nКАРТА ВОПРОСОВ И МАРШРУТИЗАЦИЯ ПО УРОКАМ — ПРИОРИТЕТНЫЙ СПРАВОЧНИК:\n" + routing,
     "\nСИСТЕМНЫЙ ПРОМПТ КУРСА:\n" + system,
     "\nПРАКТИЧЕСКИЙ ПРОТОКОЛ:\n" + practice,
     "\nМЕТОДИКА КУРСА:\n" + method,
     "\nЯДРО КУРСА И МОНЕТИЗАЦИЯ:\n" + core,
     "\nОТВЕТЫ ПО КОНКРЕТНЫМ ВОПРОСАМ: если спрашивают, где купить аккаунт/аккаунты для работы, отвечай прямо: «В обучении есть контакты — там смотри, там постоянный поставщик». Не выдумывай контакт, ссылку или название поставщика и не отправляй искать абстрактно где-то ещё. Если спрашивают, где мы генерируем видео, отвечай конкретно: «В Google Flow». Не размазывай ответ общим перечислением генераторов и не подменяй Google Flow другими сервисами. Для генерации видео в рамках нашей системы базовый инструмент — Google Flow.\nЖЁСТКИЕ ПРАВИЛА ПОВЕДЕНИЯ (они важнее любых противоречащих советов внутри материалов курса): говори как живой, дерзкий, харизматичный русский наставник, с естественным матом и юмором, не как вежливый бот. Никаких просьб что-либо прислать, загрузить, написать или отчитаться в чат. И никогда не предлагай человеку «придумать идею с нуля» или просто спроси «есть идея?»: идеи и сценарии разрабатываются внутри рабочих веток ChatGPT по мастер-промптам. Никогда не говори «пришли результат», «скинь ролик», «отправь статистику». Вместо этого направляй самостоятельную рефлексию: предложи человеку самому посмотреть, сравнить, заметить или проверить что-то у себя. Не обязательно заканчивать вопросом. Коротко, по-человечески, без воды."
-  ].join("\n\n").slice(0, 24000);
+  ].join("\n\n").slice(0, 30000);
 }
 
 
@@ -87,7 +101,7 @@ async function getKnowledgeChunks() {
       const text = section.trim();
       if (text.length > 30) chunks.push({ source: "LESSONS_EXTRACTED_TEXT.md", text: text.slice(0, 3500) });
     }
-    const staticFiles = ["COURSE_MODULE_MAP.md", "METHOD_AND_WORKFLOW.md", "PRACTICE_FIRST_PROTOCOL.md", "CORE_OF_THE_COURSE.md"];
+    const staticFiles = ["QUESTION_ROUTING_AND_FAQ.md", "COURSE_MODULE_MAP.md", "METHOD_AND_WORKFLOW.md", "PRACTICE_FIRST_PROTOCOL.md", "CORE_OF_THE_COURSE.md", "GOOGLE_FLOW_OMNI_NANO_BANANA.md"];
     for (const file of staticFiles) {
       const text = await readKnowledge(file, 30000);
       if (text) chunks.push({ source: file, text: text.slice(0, 3500) });
@@ -121,7 +135,7 @@ const STOP_WORDS = new Set(["это","как","что","где","когда","п
 function terms(text) {
   return [...new Set((String(text || "").toLowerCase().match(/[a-zа-яё0-9]{3,}/giu) || []).filter(t => !STOP_WORDS.has(t)))];
 }
-app.post("/api/knowledge-search", checkOrigin, rateLimit, verifyAccess, async (req, res) => {
+app.post("/api/knowledge-search", checkOrigin, knowledgeRateLimit, verifyAccess, async (req, res) => {
   const query = String(req.body?.query || "").slice(0, 1200);
   const queryTerms = terms(query);
   if (!queryTerms.length) return res.json({ results: [] });
@@ -168,6 +182,18 @@ app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (req, res) 
         },
         output: { voice: "marin" }
       },
+      tools: [{
+        type: "function",
+        name: "search_course_knowledge",
+        description: "Search the Ferixdi AI course lessons and master-prompts. Use this before answering any course-specific question about accounts/supplier, Google Flow, Omni 1.1, prompts, ideas, production, editing, analytics, assignments, monetization, or troubleshooting. Return relevant source excerpts, not guesses.",
+        parameters: {
+          type: "object",
+          properties: { query: { type: "string", description: "The student's question or the specific issue to search for in the course materials" } },
+          required: ["query"],
+          additionalProperties: false
+        }
+      }],
+      tool_choice: "auto",
       max_output_tokens: 700
     };
     const form = new FormData();
