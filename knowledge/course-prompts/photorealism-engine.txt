@@ -1,0 +1,2664 @@
+FINAL MASTER PROMPT — UNIVERSAL REAL-WORLD SMARTPHONE PHOTOREALISM ENGINE
+
+ULTRA-DETAILED ACCIDENTAL PHONE SNAPSHOT STANDARD
+REALISTIC VISIBLE FACE
+TRUE HUMAN EYES
+LIFELIKE EXPRESSION
+PHYSICAL ENVIRONMENTAL INTEGRATION
+NO AI BEAUTY OPTIMIZATION
+
+
+SCENE IDEA
+
+[PASTE THE COMPLETE DESCRIPTION OF THE DESIRED IMAGE HERE]
+
+
+OPTIONAL REFERENCE REQUIREMENTS
+
+When one or more reference images are provided, preserve only the characteristics explicitly required by the scene:
+
+- identity
+- facial anatomy
+- age
+- body proportions
+- hairstyle
+- hair color
+- eye color
+- clothing
+- accessories
+- location
+- composition
+- visual context
+
+Do not beautify, rejuvenate, idealize, reshape, or reinterpret the referenced person.
+
+Do not replace the person with a generic attractive AI face.
+
+Preserve recognizable identity through coherent facial proportions and anatomy rather than through artificial facial sharpening, brightened eyes, skin smoothing, or beauty retouching.
+
+
+PRIMARY EXECUTION INSTRUCTION
+
+Create one single image based on the scene idea above.
+
+The result must look like a genuine, casually captured photograph taken with an ordinary handheld smartphone during a real, uncontrolled moment.
+
+The image must not look:
+
+- generated
+- rendered
+- illustrated
+- digitally painted
+- professionally staged
+- cinematically composed
+- commercially retouched
+- beautified
+- artificially aged
+- artificially damaged
+- intentionally made “hyper-realistic”
+
+The goal is not maximum detail.
+
+The goal is not maximum beauty.
+
+The goal is not maximum technical image quality.
+
+The goal is natural photographic credibility.
+
+The image must feel believable immediately and remain convincing when closely examining:
+
+- face
+- eyes
+- eyelids
+- skin
+- expression
+- hair
+- hands
+- anatomy
+- clothing
+- environmental contact
+- shadows
+- focus
+- exposure
+- materials
+- perspective
+- background
+- text and signage
+- depth
+- physical interactions
+- smartphone processing
+
+The result must feel like a real photograph of an existing moment, not a beautiful AI image decorated with photographic imperfections.
+
+
+CORE REALISM DEFINITION
+
+Realism means reproducing the coherent physical behavior of:
+
+- a real ordinary smartphone camera
+- a real lens
+- a real small sensor
+- real autofocus
+- real automatic exposure
+- real available light
+- real human anatomy
+- real biological skin
+- real human eyes
+- real hair
+- real fabric
+- real materials
+- real gravity
+- real body weight
+- real pressure
+- real friction
+- real deformation
+- real depth
+- real environmental obstruction
+- real compositional accidents
+- real loss of visual information
+
+Realism does not mean adding maximum sharpness, excessive pores, artificial grain, random stains, exaggerated wrinkles, extreme noise, or deliberate image damage.
+
+Every visible imperfection must have a believable:
+
+- optical cause
+- anatomical cause
+- environmental cause
+- material cause
+- lighting cause
+- processing cause
+- physical cause
+
+Do not add fake defects only to imitate realism.
+
+
+REALISM PRIORITY HIERARCHY
+
+When instructions conflict, follow this order:
+
+1. Preserve the essential content of the scene idea.
+
+2. Preserve the requested person or identity when a reference is provided.
+
+3. Keep the central face recognizable when facial visibility is required.
+
+4. Maintain correct human anatomy.
+
+5. Maintain physical plausibility.
+
+6. Integrate the subject naturally into the environment.
+
+7. Preserve the limitations of an ordinary smartphone camera.
+
+8. Use only believable physical light sources.
+
+9. Maintain coherent environmental structure and perspective.
+
+10. Show real contact, pressure, friction, weight, and deformation.
+
+11. Preserve true human eyes without glass-like appearance.
+
+12. Preserve a lifelike expression connected to the situation and body posture.
+
+13. Allow softness, lost shadow detail, overlap, compression, and visual ambiguity.
+
+14. Avoid beauty optimization, cinematic styling, professional portrait quality, and artificial subject isolation.
+
+15. Prefer authenticity over attractiveness, clarity, symmetry, cleanliness, and technical perfection.
+
+
+ANTI-BEAUTIFICATION PRINCIPLE
+
+The presence of an attractive person must not trigger a beauty-photography transformation.
+
+Do not automatically:
+
+- smooth the skin
+- brighten the face
+- warm the skin tone
+- enhance the eyes
+- whiten the sclera
+- enlarge the eyes
+- sharpen the eyelashes
+- increase iris saturation
+- brighten the catchlights
+- make the lips fuller
+- make the nose narrower
+- make the jawline sharper
+- make the face more symmetrical
+- make the cheekbones stronger
+- clean or arrange the hair
+- improve the head angle
+- straighten the posture
+- make the waist more visible
+- place the hands elegantly
+- create flattering light
+- separate the subject from the background
+- blur distracting environmental objects
+- create a clean outline around the head
+- improve the image into an editorial portrait
+
+Do not protect the face, hair, clothing, posture, or silhouette from the real conditions of the environment.
+
+At the same time, when the face is meant to be visible, do not completely conceal the central facial anatomy.
+
+The goal is a recognizable person without AI beauty optimization.
+
+
+CORE FAILURE TO AVOID
+
+Avoid the common AI-generated pattern in which the image simultaneously contains:
+
+- a perfectly attractive face
+- two bright expressive eyes
+- clean white sclera
+- glossy irises
+- smooth warm skin
+- perfectly arranged hair
+- a flattering head angle
+- elegant hand placement
+- clean clothing
+- decorative foreground elements
+- an aesthetically arranged environment
+- perfect subject separation
+- cinematic depth of field
+- uniform image quality
+- unlimited detail in shadows
+- beautiful color grading
+
+A real phone photograph usually cannot preserve all these advantages at the same time.
+
+Do not create:
+
+“a beautiful portrait placed inside a realistic-looking environment.”
+
+Create:
+
+“a real person physically present inside a real environment, photographed casually by an ordinary phone.”
+
+
+CONTEXT-AWARE PHYSICAL REASONING
+
+Before constructing the image, internally determine:
+
+1. What ordinary smartphone could realistically capture this scene?
+
+2. Which smartphone lens is being used?
+
+3. Where is the camera positioned?
+
+4. What is the distance between the camera and the subject?
+
+5. What is the realistic field of view?
+
+6. What perspective distortion would occur?
+
+7. What elements are closer to the lens than the subject?
+
+8. What object or facial region would autofocus most likely choose?
+
+9. What is the primary focus plane?
+
+10. Which areas should be sharp?
+
+11. Which areas should be slightly soft?
+
+12. Which areas should lose detail because of darkness?
+
+13. Which areas should lose detail because of movement?
+
+14. Which areas should lose detail because of noise reduction?
+
+15. Which areas should lose detail because of distance?
+
+16. What are the real light sources?
+
+17. Which objects block the light?
+
+18. Which surfaces reflect or contaminate the light?
+
+19. Which side of the face receives less light?
+
+20. What parts of the subject physically touch the environment?
+
+21. Where does pressure occur?
+
+22. Where does friction occur?
+
+23. Where should clothing wrinkle, stretch, compress, or move?
+
+24. Where should hair become flattened, caught, displaced, or mixed with the environment?
+
+25. How does the subject support body weight?
+
+26. Which muscles and joints maintain the pose?
+
+27. Is the posture comfortable, transitional, compressed, or unstable?
+
+28. Which environmental objects must bend or deform?
+
+29. Where do visible branches, cables, furniture edges, walls, or structural lines originate?
+
+30. How much visual information could an actual phone preserve in one exposure?
+
+Apply these conclusions visually.
+
+Do not generate the person and environment as separate layers.
+
+Construct the entire frame as one connected physical event.
+
+
+ORDINARY SMARTPHONE CAMERA IDENTITY
+
+The image must look like it was captured using a normal consumer smartphone.
+
+It must not resemble:
+
+- medium-format photography
+- full-frame editorial photography
+- a cinema camera frame
+- a studio portrait
+- a flagship smartphone advertisement
+- a professional fashion shoot
+- a polished influencer campaign
+- an AI “photorealistic” render
+
+Preserve ordinary smartphone characteristics:
+
+- small-sensor depth behavior
+- moderately deep focus when physically appropriate
+- slightly limited micro-detail
+- mild local sharpening
+- subtle noise reduction
+- slight texture smearing in darker regions
+- modest dynamic range
+- limited highlight recovery
+- restrained shadow recovery
+- mild compression softness
+- ordinary automatic white balance
+- imperfect automatic exposure
+- subtle edge-processing artifacts
+- slight lens distortion
+- minor perspective exaggeration at close distance
+- natural handheld framing
+- occasional autofocus uncertainty
+- reduced distinction between similar dark tones
+- slightly simplified colors in shadows
+- mixed zones of sharpening and softness
+- mild edge halos around some high-contrast objects
+- slight color noise in underexposed regions
+- restrained JPEG-like tonal simplification
+
+The image should still be usable and recognizable.
+
+Do not make it deliberately ugly, extremely blurry, pixelated, corrupted, or low resolution.
+
+The quality should be slightly imperfect in a believable ordinary-phone way.
+
+
+SLIGHTLY REDUCED TECHNICAL QUALITY
+
+Reduce technical perfection slightly.
+
+Allow:
+
+- mild overall smartphone softness
+- slightly softened very fine facial texture
+- reduced detail in dark hair
+- simplified fabric texture in shadows
+- subtle underexposure noise
+- small focus inconsistencies
+- minor compression softness
+- modest highlight clipping
+- mild shadow compression
+- occasional loss of small background details
+- slight variation between locally sharpened edges and softer textures
+
+Do not add:
+
+- heavy grain
+- extreme noise
+- severe motion blur
+- aggressive chromatic aberration
+- large JPEG blocks
+- fake dust overlays
+- broken pixels
+- extreme lens smearing
+- deliberate camera damage
+- extreme low-resolution appearance
+
+The image must resemble a successful but ordinary phone photograph, not a failed photograph.
+
+
+PASSIVE CAMERA BEHAVIOR
+
+The camera must behave like a passive observer.
+
+It must not make intelligent aesthetic decisions.
+
+Do not automatically:
+
+- center the face perfectly
+- choose the most flattering angle
+- straighten every vertical line
+- correct every perspective imperfection
+- create perfect visual balance
+- remove awkward overlaps
+- brighten the eyes
+- brighten the face separately
+- warm skin independently
+- preserve every facial detail
+- blur all distracting objects
+- create a clean background opening
+- isolate the subject
+- create a professional portrait composition
+
+Allow:
+
+- slight camera tilt
+- slightly uneven spacing
+- mild perspective convergence
+- ordinary lens distortion
+- partial cropping
+- imperfect negative space
+- a subject placed slightly off-center
+- structural lines crossing the composition
+- background objects intersecting the body silhouette
+- more visual weight on one side
+- a slightly awkward camera height
+- accidental foreground overlap
+- ordinary framing mistakes
+
+The composition must feel captured rather than designed.
+
+
+ACCIDENTAL SNAPSHOT COMPOSITION
+
+The final image should feel like a spontaneous phone snapshot.
+
+Preserve:
+
+- casual camera placement
+- imperfect framing
+- mild asymmetry
+- slightly unbalanced composition
+- natural cropping
+- ordinary camera height
+- an angle that is not maximally flattering
+- minor visual inconvenience
+- a transitional moment
+- environmental objects not arranged for aesthetics
+- a subject who was not perfectly prepared
+
+Do not default to:
+
+- centered portrait composition
+- symmetrical framing
+- professional leading lines
+- clean facial framing
+- perfect headroom
+- flattering three-quarter angles
+- ideal body presentation
+- editorial pose
+- fashion-photography posture
+- staged candidness
+
+The subject may still look naturally attractive, but the image must not feel optimized to display that attractiveness.
+
+
+REALISTIC DEPTH OF FIELD
+
+Use depth behavior consistent with an ordinary smartphone camera and the requested shooting distance.
+
+For medium-distance and outdoor photographs:
+
+- much of the environment may remain reasonably recognizable
+- depth of field may be relatively deep
+- distant objects may soften gradually
+- background structure may remain readable
+- the subject should not appear cut out from the scene
+
+For close selfies:
+
+- the face may be more focused
+- the extended arm may show perspective enlargement
+- nearby objects may soften naturally
+- distant background details may lose clarity
+- depth transitions must remain physically plausible
+
+Avoid:
+
+- professional portrait-lens bokeh
+- artificial portrait mode
+- perfect subject cutout
+- uniform background blur
+- large decorative bokeh circles
+- abrupt blur boundaries
+- blurred objects at the same distance as sharp objects without cause
+- artificial haloing around hair
+- cinematic subject isolation
+
+Depth must follow real distance, lens behavior, lighting, autofocus, and movement.
+
+
+FOCUS HIERARCHY
+
+Establish one believable focus hierarchy.
+
+A realistic hierarchy may be:
+
+1. The central facial structure remains recognizable.
+
+2. The nearer eye or central face receives the strongest focus.
+
+3. The farther or more shadowed eye is slightly softer.
+
+4. Eyelashes and fine iris texture remain only moderately resolved.
+
+5. Hair and clothing gradually lose micro-detail.
+
+6. Nearby foreground objects vary depending on distance and autofocus.
+
+7. Background objects become less individually resolved with distance.
+
+Do not make all of the following equally sharp:
+
+- both eyes
+- every eyelash
+- every pore
+- every hair strand
+- every finger
+- every fabric thread
+- every leaf
+- every background object
+- every sign
+- every shadow detail
+
+Objects at similar distances must generally show similar optical behavior unless focus, movement, lighting, or processing provides a believable reason otherwise.
+
+
+REALISTIC INFORMATION BUDGET
+
+A real phone photograph has a limited visual information budget.
+
+The camera cannot preserve maximum information everywhere.
+
+The image should contain:
+
+- clearly resolved areas
+- moderately resolved areas
+- slightly soft areas
+- underexposed simplified areas
+- partially merged areas
+- visually ambiguous areas
+- distant compressed areas
+
+Allow:
+
+- the central face to remain recognizable
+- one eye to be darker or softer
+- fine skin texture to reduce in shadow
+- dark hair to merge partially with the background
+- dark clothing to lose fine folds
+- some foreground details to become unexpectedly sharp
+- distant background details to simplify
+- small text to soften naturally
+- some materials to lose microtexture
+
+Do not create universal high-definition readability.
+
+Uneven but physically coherent information distribution is essential.
+
+
+REALISTIC VISIBLE FACE
+
+When the face is important to the scene, it must remain clearly visible and recognizable.
+
+Do not completely hide:
+
+- both eyes
+- the nose
+- the mouth
+- most of the facial structure
+
+with:
+
+- dense foliage
+- large foreground objects
+- heavy hair
+- complete darkness
+- extreme motion blur
+- extreme focus failure
+
+Small environmental elements may naturally cross:
+
+- forehead edge
+- hairline
+- temple
+- outer cheek
+- jawline
+- chin edge
+- neck
+- peripheral eye area
+
+The central facial anatomy should remain readable.
+
+However, do not create:
+
+- a clean circular opening around the head
+- a perfect face window
+- a decorative environmental frame
+- a completely unobstructed silhouette
+- artificial brightness around the face
+- a perfectly separated head
+
+The environment may interfere with portrait perfection without erasing identity.
+
+
+VISIBLE FACE WITHOUT PORTRAIT OPTIMIZATION
+
+A visible face must not become:
+
+- a beauty close-up
+- a fashion portrait
+- an influencer image
+- a cinematic heroine shot
+- an advertising image
+- a studio-lit face
+
+Do not selectively:
+
+- brighten facial skin
+- open facial shadows
+- sharpen eyes
+- restore iris detail
+- whiten eye whites
+- smooth cheeks
+- reshape facial structure
+- enhance lips
+- remove environmental color casts
+- clean hair edges
+- create invisible fill light
+- apply face restoration
+- recover the face more aggressively than the environment
+
+The face must obey the same:
+
+- exposure
+- focus
+- noise
+- light direction
+- shadow obstruction
+- environmental color
+- compression
+- smartphone processing
+- motion
+- depth
+
+as the rest of the frame.
+
+Facial recognizability must come from coherent anatomy, not artificial enhancement.
+
+
+TRUE HUMAN EYES — BIOLOGICAL REALISM
+
+The eyes must look like real biological human eyes captured by an ordinary smartphone.
+
+They must not resemble:
+
+- glass marbles
+- polished plastic
+- crystal
+- glossy doll eyes
+- artificial contact lenses
+- digitally restored eyes
+- beauty-filter eyes
+- painted irises
+- luminous fantasy eyes
+
+The eyes must remain physically embedded inside the eye sockets.
+
+Their appearance must be controlled by:
+
+- eyelid anatomy
+- brow structure
+- head angle
+- available light
+- eye-socket depth
+- gaze direction
+- facial expression
+- corneal curvature
+- smartphone focus
+- exposure
+- shadow
+- environmental reflections
+
+The eyeballs must never look pasted onto or independently illuminated within the face.
+
+
+EYELID INTEGRATION
+
+The upper eyelids must naturally overlap the upper part of the irises.
+
+Do not display the complete circular iris unless the expression and eye openness physically justify it.
+
+Preserve:
+
+- realistic upper-eyelid thickness
+- natural lower-eyelid volume
+- a soft upper-eyelid shadow on the eyeball
+- ordinary eyelid folds
+- realistic eyelash attachment
+- subtle asymmetry in eye opening
+- natural skin texture around the eyes
+- mild under-eye tonal variation
+- restrained redness near the eyelid margins
+- believable eye-socket depth
+
+One eye may be slightly:
+
+- more closed
+- more tired
+- more shadowed
+- softer in focus
+- lower in contrast
+- differently angled
+- less reflective
+
+Do not make both eye openings geometrically identical.
+
+
+NATURAL SCLERA
+
+The sclera must look like living tissue.
+
+Use a naturally subdued:
+
+- warm off-white
+- grayish off-white
+- cream off-white
+- subtly pinkish off-white
+
+depending on the lighting.
+
+Preserve:
+
+- mild tonal variation
+- slight darkness beneath the upper eyelid
+- darker eye corners
+- restrained natural redness near the inner corner
+- very subtle veins only where realistically resolvable
+- reduced brightness in shadow
+- different brightness between both eyes when justified
+
+Do not create:
+
+- pure white sclera
+- glowing eye whites
+- digitally cleaned eyeballs
+- uniform sclera brightness
+- excessively visible veins
+- sharp artificial red lines
+- overexposed eye whites
+
+The sclera must obey the same light and color conditions as the surrounding skin.
+
+
+REALISTIC IRIS
+
+The iris must contain natural biological pigmentation without excessive microscopic detail.
+
+Preserve:
+
+- soft internal color variation
+- restrained radial structure
+- irregular natural pigmentation
+- subtle variation near the pupil
+- partial loss of detail beneath the upper eyelid
+- reduced clarity in shadow
+- slight difference between the two eyes
+- natural softness from phone-camera distance
+- eye color that remains recognizable without glowing
+
+Do not create:
+
+- gemstone iris texture
+- crystal-like radial lines
+- neon eye color
+- glowing colored rings
+- extremely dark artificial limbal rings
+- perfectly symmetrical patterns
+- identical pigmentation in both eyes
+- fantasy contact-lens appearance
+- macro-level iris detail at normal portrait distance
+- over-sharpened iris fibers
+
+The viewer should perceive natural eye color, not study a digitally rendered iris.
+
+
+PUPIL REALISM
+
+Pupil size must correspond to the available light.
+
+In lower light, the pupils may be moderately larger.
+
+In brighter light, they may be smaller.
+
+Preserve natural optical integration between:
+
+- pupil
+- iris
+- corneal reflection
+- eyelid shadow
+- gaze direction
+
+Do not create:
+
+- glowing pupils
+- graphic black circles
+- unnaturally sharp pupil borders
+- artificial pupil enlargement for attractiveness
+- identical digital-looking pupils
+- pupil size inconsistent with the environment
+
+
+CORNEAL REFLECTIONS AND CATCHLIGHTS
+
+Real eyes contain a thin tear film and curved corneal reflections, but they must not look glassy.
+
+Catchlights must correspond to actual physical light sources.
+
+Preserve:
+
+- one small primary reflection when justified
+- softer secondary reflection only when physically caused
+- different reflection strength between both eyes
+- slight shape differences caused by eye angle
+- restrained brightness
+- partial interruption by eyelids or eyelashes
+- weaker reflection in the darker eye
+- subtle sky-shaped reflection in overcast outdoor conditions when appropriate
+
+Do not create:
+
+- identical catchlights
+- large perfect white circles
+- decorative sparkles
+- ring-light reflections without a real ring light
+- studio softbox reflections without a real softbox
+- multiple unexplained highlights
+- full-surface gloss
+- mirror-like eyeballs
+- wet doll-eye shine
+- painted white dots inside the iris
+
+Catchlights must look like reflections on a curved moist corneal surface, not added graphic details.
+
+
+NATURAL EYE MOISTURE
+
+Preserve only restrained biological moisture:
+
+- a subtle tear-line highlight
+- slight softness along the waterline
+- mild reflection near the lower eyelid
+- natural tonal variation near the inner corner
+
+Do not create:
+
+- watery glass eyes
+- thick reflective waterlines
+- crying moisture without context
+- glossy contact-lens surfaces
+- exaggerated inner-corner shine
+- artificial liquid coating
+
+The eyes should feel alive but not glossy.
+
+
+EYES UNDER DIFFICULT LIGHT
+
+In darkness, dense vegetation, mixed light, interior shadows, or other difficult conditions:
+
+- one eye may receive less light
+- one iris may lose more detail
+- one catchlight may weaken or disappear
+- the upper-eyelid shadow may become stronger
+- the sclera may become darker
+- environmental color may affect the eye whites subtly
+- eyelashes may merge with shadow
+- the darker eye may become slightly softer
+- eye contrast may reduce
+
+Both eyes may remain visible, but they must not remain equally:
+
+- bright
+- sharp
+- reflective
+- saturated
+- detailed
+- expressive
+
+Do not brighten the darker eye separately.
+
+Do not restore hidden iris texture.
+
+Do not add sparkle to compensate for low light.
+
+
+EYES AND SMARTPHONE QUALITY
+
+The eyes must have the same ordinary-phone quality as the surrounding face.
+
+At normal selfie or portrait distance, preserve:
+
+- readable eye shape
+- recognizable iris color
+- moderate local detail
+- slight softness in eyelashes
+- restrained iris structure
+- mild sharpening around stronger edges
+- reduced micro-detail in shadow
+- minor compression softness
+- realistic noise reduction
+
+The eyes must not appear significantly sharper than:
+
+- eyelids
+- eyebrows
+- nose
+- lips
+- surrounding skin
+
+No:
+
+- AI eye restoration
+- iris enhancement
+- pupil sharpening
+- sclera whitening
+- catchlight enhancement
+- eyelash reconstruction
+- eye enlargement
+- eye-color enhancement
+- artificial eye gloss
+
+
+NATURAL GAZE
+
+The gaze must feel produced by two real eyes controlled by a living person.
+
+Both eyes should generally focus on the same physical point while preserving tiny natural asymmetries caused by:
+
+- anatomy
+- perspective
+- head angle
+- eyelid openness
+- attention
+- focus distance
+
+Avoid obvious crossed or divergent eyes unless explicitly requested.
+
+Also avoid digitally perfect alignment.
+
+The gaze may be:
+
+- softly directed toward the camera
+- slightly beside the lens
+- focused on a nearby object
+- lowered
+- momentarily distracted
+- cautious
+- tired
+- neutral
+- shifting toward the photographer
+- briefly unfocused during a transitional moment
+
+Do not create:
+
+- an intense seductive stare by default
+- highly expressive commercial eyes
+- perfectly centered pupils
+- wide-open beauty eyes
+- a vacant gaze disconnected from the expression
+- eyes looking toward unexplained different points
+
+The gaze, eyelids, eyebrows, head direction, mouth, and body posture must communicate the same situational state.
+
+
+LIFELIKE EXPRESSION
+
+The subject must have a lifelike expression that feels:
+
+- biologically real
+- emotionally coherent
+- situational
+- mentally present
+- naturally asymmetrical
+- subtly transitional
+- connected to the body
+- affected by the environment
+- restrained in intensity
+The expression must not resemble:
+
+- a fixed AI portrait emotion
+- a beauty-model expression
+- a rehearsed social-media face
+- a seductive stare
+- a perfectly controlled half-smile
+- artificial surprise
+- exaggerated sadness
+- theatrical fear
+- vacant neutrality
+- mannequin calmness
+- an expression selected only to make the subject attractive
+
+The face must feel alive even when the emotion is subtle.
+
+
+WHOLE-FACE EXPRESSION COHERENCE
+
+Expression must emerge from coordinated behavior across:
+
+- gaze direction
+- eyelid openness
+- upper-eyelid pressure
+- lower-eyelid tension
+- eyebrow position
+- forehead tension
+- cheek movement
+- nostril response
+- lip compression
+- mouth-corner position
+- jaw tension
+- chin movement
+- head angle
+- neck tension
+- breathing
+- shoulder position
+- body posture
+- hand behavior
+
+Do not combine contradictory signals such as:
+
+- smiling lips with inactive cheeks
+- frightened eyes with a completely relaxed jaw
+- physical discomfort with a seductive gaze
+- raised eyebrows without forehead response
+- intense eye contact inside an otherwise vacant face
+- parted lips without emotional or physical reason
+- perfectly relaxed facial muscles during strain
+
+All visible facial regions must belong to the same moment.
+
+
+SUBTLE MICRO-EXPRESSIONS
+
+Depending on the scene, allow restrained signs such as:
+
+- one eyelid slightly lower than the other
+- a small difference in eyebrow height
+- mild tension between the eyebrows
+- slight cheek tension
+- one mouth corner more compressed
+- subtle jaw engagement
+- a small nostril response
+- momentary squinting
+- slightly uneven lip contact
+- restrained forehead movement
+- a mild shift in attention
+- a brief interrupted expression
+- slight tension caused by balance or discomfort
+
+Do not exaggerate every muscle.
+
+Do not add random asymmetry only to imitate realism.
+
+Every asymmetry must be anatomically and situationally plausible.
+
+
+SITUATIONAL EXPRESSION
+
+The expression must respond to:
+
+- the actual activity
+- comfort or discomfort
+- balance
+- physical effort
+- environmental contact
+- weather
+- temperature
+- darkness
+- noise
+- the presence of another person
+- sudden attention
+- awareness of the camera
+- fatigue
+- concentration
+- emotional context
+
+A person in dense bushes may show:
+
+- mild discomfort
+- caution
+- distraction
+- concentration
+- a restrained squint
+- subtle jaw tension
+- attention toward nearby branches
+- a brief reaction to something touching the skin
+
+A person standing on a street may show:
+
+- quiet awareness
+- mild curiosity
+- an incomplete smile
+- ordinary attention toward the photographer
+- subtle tension from weather or surrounding activity
+
+A person indoors may show:
+
+- tiredness
+- calm distraction
+- restrained amusement
+- momentary attention
+- relaxed but mentally present neutrality
+
+Do not automatically create a flattering calm portrait expression.
+
+
+TRANSITIONAL MOMENT
+
+The photograph should feel captured between fully formed expressions.
+
+Allow subtle transitional states such as:
+
+- the beginning of a smile
+- the end of a smile
+- a moment before speaking
+- a brief pause after noticing the camera
+- attention shifting
+- a nearly completed blink
+- lips that have just relaxed
+- eyebrows beginning to move
+- a slight response to discomfort
+- a jaw becoming mildly tense
+
+Do not create:
+
+- anatomically confused expressions
+- distorted mouths
+- contextless half-closed eyes
+- intentionally unattractive frozen frames
+- extreme mid-speech distortion unless requested
+
+The transitional quality must be restrained and believable.
+
+
+MOUTH AND JAW REALISM
+
+Preserve:
+
+- slight left-to-right asymmetry
+- realistic lip contact
+- ordinary lip texture
+- natural lip color variation
+- subtle compression
+- believable mouth-corner tension
+- realistic shadow between the lips
+- shadow beneath the lower lip
+- coherent jaw position
+- minor chin response
+
+The lips may be:
+
+- gently closed
+- naturally relaxed
+- slightly compressed
+- minimally parted because of breathing
+- minimally parted before speaking
+- subtly uneven during a transitional expression
+
+Do not automatically part the lips for attractiveness.
+
+Do not create:
+
+- glossy lips
+- sharp digital lip outlines
+- inflated volume
+- permanent pout
+- perfect symmetrical smile
+- unnaturally visible teeth
+- excessively white teeth
+- a smile added to an otherwise inactive face
+
+When teeth are visible, they must appear incidental, naturally colored, and consistent with the mouth position.
+
+
+HEAD, NECK, AND BODY CONNECTION
+
+The expression must continue beyond the face.
+
+Head position, neck muscles, shoulders, hands, and posture must support the same physical and emotional state.
+
+When uncomfortable or compressed:
+
+- the neck may shorten slightly
+- one shoulder may rise
+- the jaw may become mildly tense
+- the head may avoid an obstacle
+- the gaze may monitor the surroundings
+- the hands may create space or maintain balance
+
+When relaxed:
+
+- the jaw may rest naturally
+- eyelids may soften
+- shoulders may lower
+- breathing may appear easier
+- the mouth may relax
+
+Do not place a relaxed beauty expression on a body showing physical strain.
+
+Do not place a dramatic expression on a completely passive body.
+
+
+AVOID PERFORMED CANDIDNESS
+
+Do not simulate candidness by mechanically adding:
+
+- parted lips
+- a raised eyebrow
+- a tilted head
+- a sideways glance
+- an imperfect smile
+- a decorative loose hair strand
+- a distant expression
+
+without situational cause.
+
+Avoid the standard AI “candid model” combination:
+
+- direct eye contact
+- bright expressive eyes
+- slightly open glossy lips
+- perfect head tilt
+- flawless skin
+- carefully messy hair
+- relaxed half-smile
+- no physical tension
+
+The subject must not look like they are performing spontaneity.
+
+
+FACIAL ANATOMY REALISM
+
+Preserve:
+
+- natural facial asymmetry
+- slightly different eye shapes
+- believable forehead
+- realistic cheek volume
+- natural nose width
+- coherent nostrils
+- realistic philtrum
+- natural lip structure
+- believable jaw transition
+- realistic chin
+- subtle nasolabial structure
+- natural facial-fat distribution
+- realistic head-to-neck connection
+- plausible ear position
+- age-appropriate facial structure
+
+Avoid:
+
+- perfect symmetry
+- tiny sculpted noses
+- inflated lips
+- extremely sharp jawlines
+- hollow model cheeks
+- oversized almond-shaped eyes
+- identical eyebrows
+- generic AI beauty faces
+- doll-like proportions
+- unnatural facial narrowing
+- mannequin expressions
+
+
+SKIN REALISM
+
+Skin must look like biological tissue photographed by an ordinary smartphone.
+
+Preserve:
+
+- natural uneven skin tone
+- restrained visible pores
+- fine facial hair
+- mild redness around the nose
+- subtle redness around cheeks or eyelids
+- natural under-eye texture
+- slight differences between both cheeks
+- uneven oiliness and dryness
+- realistic skin thickness
+- soft biological transitions
+- mild local discoloration
+- realistic shadows near nostrils
+- natural darkness beneath the lower lip
+- believable chin and jaw shading
+- small expression-related lines
+- localized compression where hair or objects touch
+- mild moisture when physically appropriate
+
+Different body areas must not have identical texture.
+
+Face, neck, arms, shoulders, and hands should differ naturally in:
+
+- pore scale
+- dryness
+- redness
+- fine hair
+- oiliness
+- exposure
+- compression
+- surface texture
+
+Skin detail must respond to:
+
+- focus
+- lighting
+- shadow depth
+- camera distance
+- movement
+- sensor processing
+- noise reduction
+- compression
+- resolution
+
+Skin in deep shadow should lose fine texture.
+
+Do not preserve visible pores equally across the entire face.
+
+
+AGE-APPROPRIATE SKIN
+
+For younger adults, preserve real texture without making the skin poreless or airbrushed.
+
+For older adults, preserve coherent age-related characteristics:
+
+- forehead lines following muscle movement
+- crow’s-feet
+- under-eye folds
+- cheek texture variation
+- nasolabial transitions
+- mouth-area lines
+- natural neck texture
+- uneven elasticity
+- asymmetric wrinkle depth
+
+Do not erase age.
+
+Do not exaggerate age into repeated carved patterns.
+
+Age-related features must follow anatomy and expression.
+
+
+SKIN PROHIBITIONS
+
+Do not create:
+
+- porcelain skin
+- waxy skin
+- plastic skin
+- rubber-like skin
+- beauty-filter smoothing
+- frequency-separation appearance
+- airbrushed cheeks
+- uniform pore patterns
+- glowing facial skin
+- perfectly clean gradients
+- artificial blush
+- random freckles
+- arbitrary blemishes
+- fake dirt patches
+- exaggerated acne
+- decorative scratches
+- excessive micro-detail
+- hyper-sharp wrinkles
+- randomly damaged skin
+
+Realistic skin is imperfect but coherent.
+
+Do not replace beautification with artificial damage.
+
+
+MAKEUP REALISM
+
+When makeup is requested, it must sit naturally on biological skin.
+
+Preserve:
+
+- slight application irregularity
+- interaction with pores and fine texture
+- natural fading near skin folds
+- mild asymmetry
+- restrained edge softness
+- realistic powder or cream behavior
+- minor creasing where appropriate
+- reduced makeup detail in shadow
+
+For eyeliner and mascara:
+
+- follow real eyelid anatomy
+- allow slight asymmetry between both sides
+- preserve ordinary mascara separation
+- avoid perfectly mirrored wings
+- avoid razor-sharp digital edges
+- avoid floating eyeliner
+- avoid identical eyelash patterns
+- avoid makeup that reshapes the eyeball
+
+Makeup may be beautiful, but it must not erase biological texture.
+
+
+HAIR REALISM
+
+Hair must behave as weighted, irregular groups of strands.
+
+Preserve:
+
+- natural root direction
+- grouped hair masses
+- uneven density
+- asymmetrical volume
+- gravity
+- friction
+- soft overlap
+- partial merging in shadow
+- restrained flyaways
+- natural frizz
+- variation in strand visibility
+- sections that clump together
+- sections that separate irregularly
+- areas with different curl definition
+- realistic interaction with clothing, skin, wind, moisture, and objects
+- slight compression against neck or shoulders
+
+Do not render every strand.
+
+Do not create:
+
+- helmet-like hair
+- one polished solid mass
+- perfectly separated strands
+- identical curls
+- evenly distributed volume
+- uniformly sharp flyaways
+- artificial gloss
+- a clean halo around the head
+- hair arranged symmetrically around the face
+- decorative “messy” strands placed only for beauty
+
+Some dark hair may lose detail or merge with dark surroundings naturally.
+
+
+ENVIRONMENTAL HAIR CONTACT
+
+When the subject is near vegetation, clothing, furniture, bedding, wind, water, or other objects, allow:
+
+- hair caught behind a branch
+- strands pressed against skin
+- hair flattened against clothing
+- hair mixed visually with environmental elements
+- partial tangling
+- uneven separation
+- mild dampness
+- small attached fibers or natural fragments
+- strands crossing the peripheral cheek
+- reduced shine in shadows
+
+Keep central facial features recognizable when required, but do not preserve a perfectly clean facial outline.
+
+
+HAND AND FINGER REALISM
+
+Hands must have:
+
+- correct number of fingers
+- correct thumb placement
+- believable palm structure
+- distinct joints
+- realistic finger lengths
+- coherent nail orientation
+- natural wrist rotation
+- believable tendons and knuckles
+- anatomically plausible overlap
+- visible pressure at contact points
+- clear physical purpose
+
+Hands may:
+
+- hold the phone
+- support body weight
+- push an object aside
+- move hair
+- touch the face
+- hold clothing
+- rest on furniture
+- maintain balance
+- interact with the environment
+
+Do not place both hands in decorative portrait positions.
+
+Avoid:
+
+- fused fingers
+- extra fingers
+- missing fingers
+- duplicated fingers
+- melted palms
+- identical finger lengths
+- impossible wrists
+- floating hands
+- vague contact
+- fingers passing through objects
+- hands hidden only to avoid anatomical difficulty
+
+
+BODY ANATOMY AND WEIGHT
+
+Preserve:
+
+- believable body proportions
+- natural joint movement
+- physically possible poses
+- correct perspective scaling
+- realistic weight distribution
+- body compression
+- muscle tension appropriate to the pose
+- correct support points
+- natural balance
+- gravity
+- realistic contact between body and surfaces
+
+The body must not float.
+
+Where the body touches a surface, show:
+
+- pressure
+- indentation
+- compression
+- altered posture
+- contact shadow
+- displaced fabric
+- displaced environmental materials
+
+Do not create a pose that is visually attractive but physically impossible.
+
+
+POSE AUTHENTICITY
+
+The pose must arise from the actual environment and activity.
+
+Do not automatically create:
+
+- flattering head rotation
+- elongated neck
+- open shoulders
+- visible waist
+- symmetrical hands
+- elegant leg placement
+- perfect posture
+- clean body silhouette
+- fashion-model balance
+
+Allow:
+
+- uneven shoulder height
+- mild torso compression
+- asymmetric weight distribution
+- a slightly bent neck
+- one arm supporting balance
+- elbows adapting to available space
+- knees shifting around obstacles
+- subtle muscle tension
+- an imperfect head angle
+- a transitional posture
+- mild physical discomfort
+- a less flattering but believable body arrangement
+
+The person may still look natural and attractive, but the physical situation must determine the pose.
+
+
+CLOTHING REALISM
+
+Clothing must respond to:
+
+- gravity
+- body shape
+- posture
+- seams
+- tension
+- compression
+- movement
+- pressure
+- moisture
+- wind
+- friction
+- environmental contact
+
+Preserve:
+
+- anatomically caused folds
+- seam tension
+- uneven stretching
+- localized compression
+- displaced edges
+- shadow inside folds
+- realistic material thickness
+- different behavior between fabrics
+- natural wrinkling
+- interaction with hair and objects
+- subtle lint or wear when appropriate
+
+Do not make clothing perfectly clean, flat, symmetrical, or showroom-new unless the scene specifically requires it.
+
+
+ENVIRONMENTAL MARKS ON CLOTHING
+
+In damp, dirty, dusty, vegetated, outdoor, or physically active environments, allow restrained localized evidence such as:
+
+- tiny leaf fragments
+- mild pollen
+- light dust
+- subtle soil transfer
+- faint moisture
+- localized darkening
+- small wrinkles caused by branches
+- pulled seams
+- flattened fibers
+- minor lint
+- slight material wear
+
+Do not add dramatic grime everywhere.
+
+Every mark must be:
+
+- localized
+- subtle
+- physically caused
+- appropriate to contact duration
+- appropriate to material
+
+
+DARK CLOTHING REALISM
+
+Dark clothing must not preserve unlimited detail.
+
+Allow:
+
+- large dark tonal masses
+- selective readable folds
+- reduced texture in deep shadow
+- subtle differences between black materials
+- mild edge softness
+- partial merging with the background
+- ordinary lint or wear
+- coherent seams and closures
+
+Do not brighten every fold merely to show clothing detail.
+
+Do not turn black clothing into a completely featureless void.
+
+Maintain enough structure to understand the garment while respecting limited dynamic range.
+
+
+MATERIAL REALISM
+
+Every material must respond differently to light, pressure, moisture, and focus.
+
+Skin, eyes, hair, cotton, wool, synthetic fabric, glass, wood, metal, plastic, painted walls, bark, leaves, soil, stone, pavement, water, vehicles, and architectural surfaces must have distinct:
+
+- roughness
+- reflectivity
+- highlight width
+- translucency
+- texture scale
+- deformation
+- edge behavior
+- shadow response
+- moisture response
+- signs of wear
+
+Do not apply identical:
+
+- gloss
+- sharpness
+- contrast
+- texture
+- local detail
+
+to every material.
+
+Eyes must not reflect like glass.
+
+Skin must not reflect like plastic.
+
+Fabric must not resemble skin.
+
+Hair must not stay uniformly glossy in darkness.
+
+
+ENVIRONMENTAL INTEGRATION
+
+The subject must feel physically located inside the environment.
+
+The environment is not a decorative background.
+
+It must affect:
+
+- pose
+- lighting
+- color
+- visibility
+- hair
+- clothing
+- body balance
+- contact points
+- focus
+- exposure
+- composition
+
+Depending on the scene, show:
+
+- environmental shadows on the subject
+- color reflection from nearby surfaces
+- body displacement of surrounding objects
+- bent vegetation
+- compressed furniture
+- disturbed bedding
+- flattened grass
+- clothing pressure
+- displaced hair
+- contact shadows
+- transferred moisture, dust, soil, or fibers
+- restricted movement
+- imperfect balance
+- natural obstruction
+
+The subject and environment must share one physical world.
+
+
+PHYSICAL CONTACT AND FORCE
+
+Every significant contact point must contain:
+
+- a clear object
+- a clear point of contact
+- a clear direction of force
+- a visible physical response
+
+Examples:
+
+- a hand pushing a branch must displace leaves and bend the stem
+- a shoulder pressing into a cushion must create indentation
+- a body sitting on grass must flatten nearby vegetation
+- fabric caught by an object must stretch or wrinkle
+- hair trapped behind an object must change direction
+- a hand supporting weight must show finger spreading and wrist tension
+- feet on the ground must create believable support and perspective
+
+Do not create objects that touch the subject without pressure, shadow, or deformation.
+
+Do not make every object touch the person.
+
+Use a limited number of clear, functional contact points.
+
+
+VEGETATION REALISM
+
+When vegetation is present:
+
+- branches must originate from believable stems
+- stems must continue through space coherently
+- branch thickness must remain consistent
+- leaves must attach to plausible structures
+- leaf orientation must vary
+- body weight must displace nearby growth
+- branches must bend under pressure
+- foliage density must affect visibility
+- dark leaves must lose detail in shadow
+- foreground leaves must follow real depth
+- shadows must correspond to actual leaf geometry
+- leaves must vary in age, color, surface angle, damage, moisture, and focus
+
+Do not create:
+
+- disconnected branches
+- random dark lines
+- floating leaves
+- repeated identical leaves
+- leaves uniformly facing the camera
+- decorative foliage frames
+- a perfect opening around the face
+- plant structures that ignore pressure
+- branches passing through the body
+- chaotic vegetation without functional structure
+
+Functional botanical structure is more important than maximum leaf quantity.
+
+
+FOREGROUND OCCLUSION
+
+Foreground objects may naturally:
+
+- overlap the body
+- cross the peripheral face
+- interrupt hair
+- partially cover clothing
+- obscure small hand details
+- break the silhouette
+- introduce visual complexity
+
+Occlusion must be:
+
+- spatially plausible
+- physically connected
+- depth-consistent
+- perspective-correct
+- caused by real scene geometry
+
+Do not create a decorative foreground frame.
+
+Do not place blurred objects symmetrically around the face.
+
+Do not cover central facial features excessively when the face must remain visible.
+
+
+FOREGROUND BLUR
+
+Foreground blur must result from real object distance and lens behavior.
+
+Preserve:
+
+- irregular softness
+- partial recognizable structure
+- varied edge definition
+- natural overlap
+- different distances from the lens
+- non-uniform opacity
+- occasional sharper nearby edges
+
+Avoid:
+
+- perfect green circles
+- smooth cinematic bokeh
+- symmetrical blur
+- painterly foreground blobs
+- a professional portrait-lens tunnel
+- a perfectly blurred frame around the subject
+
+An extremely close object may become heavily blurred, but its placement must remain physically plausible.
+
+
+LIGHTING REALISM
+
+All light must come from believable physical sources.
+
+Determine:
+
+- direction
+- intensity
+- distance
+- softness
+- color temperature
+- obstruction
+- reflection
+- absorption
+- scattering
+
+Light must interact consistently with:
+
+- face
+- eye sockets
+- eyelids
+- nose
+- lips
+- jaw
+- hair
+- clothing
+- foreground objects
+- background surfaces
+- vegetation
+- furniture
+- architecture
+- reflective materials
+
+Preserve:
+
+- natural light falloff
+- uneven local brightness
+- coherent shadow direction
+- object-shaped shadows
+- subtle reflected light
+- environmental color contamination
+- realistic material highlights
+- partial loss of dark detail
+- restrained specular reflections
+- differences between illuminated and shadowed regions
+
+Do not illuminate every part equally.
+
+
+FACIAL LIGHTING
+
+Do not give the face more convenient light than the environment.
+
+Allow:
+
+- one side of the face darker
+- one eye under stronger eyelid or environmental shadow
+- subtle green, blue, warm, cool, or neutral reflected color
+- restrained object-shaped shadow
+- reduced detail on the darker cheek
+- realistic eye-socket shadows
+- shadow beneath the nose
+- shadow below the lower lip
+- shadow under the chin
+- imperfect color balance across the face
+- mild exposure inconsistency
+
+Do not create:
+
+- invisible fill light
+- studio beauty lighting
+- cinematic rim light
+- glowing cheek highlights
+- perfectly illuminated eyes
+- equal facial brightness
+- artificially opened shadows
+- independently lit facial skin
+
+The face may remain recognizable without being optimally illuminated.
+
+
+OVERCAST DAYLIGHT
+
+When the scene uses cloudy outdoor light, preserve:
+
+- broad soft illumination
+- restrained highlights
+- relatively low contrast
+- cool or neutral environmental influence
+- mild eye-socket shadows
+- soft shadows beneath nose and chin
+- subdued eye reflections
+- slightly flat tonal response
+- no dramatic directional light
+- no cinematic glow
+- no beauty-style cheek highlights
+
+Soft light must not erase:
+
+- facial structure
+- skin texture
+- age-related lines
+- under-eye depth
+- tonal variation
+
+
+INTERIOR AVAILABLE LIGHT
+
+When indoors, preserve the actual mixture of:
+
+- window light
+- ceiling light
+- lamp light
+- reflected wall color
+- screen light
+- shadowed corners
+- mixed color temperatures
+
+Do not neutralize every white surface.
+
+Do not make facial skin perfectly warm while the room is cool or mixed.
+
+Allow:
+
+- slight white-balance imperfection
+- uneven exposure
+- shadow noise
+- darker background regions
+- local color contamination
+- mild highlight clipping near windows or lamps
+
+
+LOW-LIGHT REALISM
+
+In low light, allow:
+
+- enlarged but natural pupils- weaker catchlights
+- softer eye detail
+- reduced skin microtexture
+- mild color noise
+- texture smearing from noise reduction
+- dark hair merging into shadows
+- reduced color separation
+- partial loss of fabric detail
+- modest highlight clipping
+- autofocus uncertainty
+
+Do not create a perfectly clean low-light portrait.
+
+Do not reveal unlimited detail in darkness.
+
+
+DYNAMIC RANGE LIMITATIONS
+
+A real phone cannot preserve unlimited highlight and shadow information.
+
+Allow:
+
+- bright sky or windows to lose subtle detail
+- small highlights to clip
+- deep shadows to lose texture
+- dark hair to merge
+- black clothing to simplify
+- distant objects to lose color separation
+- one side of the face to soften
+- recessed facial areas to become less readable
+- background details to collapse into tonal masses
+
+Do not:
+
+- open every shadow
+- recover every highlight
+- apply aggressive HDR
+- distribute contrast evenly
+- reveal impossible information in darkness
+
+The whole frame must share one believable exposure decision.
+
+
+COLOR REALISM
+
+Use restrained, context-dependent photographic color.
+
+Preserve:
+
+- slightly imperfect white balance
+- realistic skin-tone variation
+- mixed color temperatures when appropriate
+- lower saturation in shadow
+- environmental color reflection
+- natural transitions between light and shade
+- muted colors in poor light
+- slight tonal simplification
+- ordinary smartphone color processing
+
+Avoid:
+
+- orange skin
+- magenta facial shadows
+- teal cinematic shadows
+- neon vegetation
+- glowing eyes
+- excessively white teeth
+- oversaturated lips
+- perfectly neutral whites in mixed light
+- excessive vibrance
+- cinematic color separation
+- artificial skin warmth
+
+
+ENVIRONMENTAL COLOR CONTAMINATION
+
+Nearby surfaces must affect color physically.
+
+Examples:
+
+- vegetation may create restrained green reflection in shadows
+- red walls may warm nearby skin
+- blue daylight may cool shadowed areas
+- warm lamps may produce localized yellow-orange light
+- reflective clothing may tint nearby skin
+- pavement or walls may influence lower facial and clothing shadows
+
+Do not apply one uniform color filter.
+
+Color contamination must be:
+
+- localized
+- subtle
+- strongest in reflected-light areas
+- consistent with scene geometry
+
+
+BACKGROUND REALISM
+
+The background must feel like a real continuation of the location.
+
+Preserve:
+
+- coherent perspective
+- realistic scale
+- ordinary depth
+- structural continuity
+- natural clutter
+- partial occlusion
+- believable wear
+- uneven surfaces
+- realistic object spacing
+- ordinary construction details
+- context-appropriate objects
+- areas with different levels of readability
+
+The environment should look as though it existed before the photograph and continued after it.
+
+
+LIVED-IN INTERIORS
+
+For interior scenes, allow ordinary details such as:
+
+- cables
+- chargers
+- cups
+- containers
+- clothing
+- cushions
+- furniture seams
+- door frames
+- wall switches
+- slightly uneven bedding
+- household objects
+- shelves
+- minor wall marks
+- imperfect alignment
+- small functional clutter
+- signs of daily use
+
+Do not create:
+
+- a sterile showroom
+- suspiciously empty surfaces
+- perfectly arranged decorative objects
+- identical spacing
+- every object facing the camera
+- generic luxury interiors
+- an unnaturally clean generated room
+
+Do not add meaningless clutter.
+
+Every object should make sense for the location.
+
+
+STREET AND OUTDOOR BACKGROUNDS
+
+For street scenes, preserve ordinary details such as:
+
+- utility poles
+- overhead wires
+- parked cars
+- worn pavement
+- building façades
+- windows
+- storefronts
+- road signs
+- distant pedestrians
+- vehicle reflections
+- architectural wear
+- drains
+- curb edges
+- imperfect construction lines
+- background traffic
+- weather effects
+
+Do not create an idealized empty street.
+
+Do not make all buildings perfectly straight, clean, new, or uniformly detailed.
+
+Allow ordinary visual inconvenience and partial obstruction.
+
+
+BACKGROUND DETAIL LIMITATIONS
+
+Do not make every distant object perfectly readable.
+
+Depending on distance, light, focus, movement, and compression, background details may be:
+
+- slightly soft
+- partially blocked
+- underexposed
+- simplified
+- visually merged
+- difficult to identify
+- reduced to tonal shapes
+
+At the same time, do not blur the entire environment into a portrait backdrop.
+
+The background must remain structurally understandable.
+
+
+ENVIRONMENTAL TEXT AND SIGNAGE
+
+Incidental environmental text may appear when physically appropriate, including:
+
+- storefront signs
+- street signs
+- posters
+- labels
+- packaging
+- vehicle markings
+- book spines
+- household notices
+- distant advertisements
+- building numbers
+
+Text must:
+
+- belong to a physical object
+- follow correct perspective
+- follow the surface plane
+- receive correct light and shadow
+- soften naturally with distance
+- remain secondary to the scene
+- become less readable when small, distant, blurred, or partially obscured
+
+Do not add:
+
+- captions
+- subtitles
+- titles
+- interface elements
+- borders
+- watermarks
+- promotional text unrelated to the environment
+
+Avoid prominent nonsensical typography.
+
+When exact text rendering is unreliable, keep incidental text:
+
+- small
+- distant
+- partially obscured
+- naturally soft
+- secondary
+
+
+ORDINARY MATERIAL WEAR
+
+Real objects and environments may contain restrained wear:
+
+- minor fabric pilling
+- lint
+- softened garment edges
+- worn paint
+- wall marks
+- uneven pavement
+- dust on glass
+- slight vehicle dirt
+- small scratches
+- weathered architecture
+- worn furniture edges
+- ordinary surface variation
+
+Do not add dramatic damage everywhere.
+
+Wear must be:
+
+- localized
+- material-specific
+- age-appropriate
+- environmentally appropriate
+- restrained
+
+
+SUBJECT–BACKGROUND INTEGRATION
+
+Do not force perfect separation.
+
+Allow:
+
+- dark hair to merge with dark surroundings
+- black clothing to lose edge definition
+- shadows to connect the body with the environment
+- objects to overlap the silhouette
+- similar tones to blend
+- parts of the body to become visually quieter
+- environmental reflections on skin and clothing
+- background structures to remain visible near the head
+
+Do not:
+
+- outline the subject with artificial light
+- brighten the background behind the head
+- create cinematic rim lighting
+- create a perfect hair cutout
+- create an artificial halo
+- separate the face using portrait-mode blur
+
+The person must belong to the same optical space as the environment.
+
+
+REFLECTION AND SHADOW CONSISTENCY
+
+All reflections and shadows must agree with:
+
+- light direction
+- object position
+- object distance
+- material
+- surface angle
+- environmental geometry
+
+Do not create:
+
+- reflections of missing objects
+- duplicate people
+- inconsistent mirror images
+- shadows pointing in incompatible directions
+- shadows without objects
+- missing contact shadows
+- impossible highlight placement
+- uniformly glossy surfaces
+
+Reflective surfaces may contain imperfect, compressed, partially obscured reflections.
+
+
+REALISTIC OBJECT STRUCTURE
+
+Objects must have coherent:
+
+- shape
+- perspective
+- scale
+- construction
+- attachment
+- continuity
+- depth
+- material
+
+Do not create objects that:
+
+- float
+- merge into unrelated objects
+- change shape across their length
+- duplicate
+- pass through people
+- begin or end without structural explanation
+- contain impossible geometry
+- have disconnected parts
+- ignore perspective
+
+Important structural lines must continue logically through space.
+
+
+REALISTIC IMPERFECTIONS
+
+Use only imperfections with a clear cause.
+
+Photographic imperfections may include:
+
+- slight autofocus inconsistency
+- mild motion softness
+- shadow noise
+- subtle lens distortion
+- slight perspective error
+- modest highlight clipping
+- limited dynamic range
+- mild compression
+- edge softness
+- subtle sharpening halos
+- imperfect white balance
+- slight tonal simplification
+
+Human imperfections may include:
+
+- facial asymmetry
+- uneven eye openness
+- subtle skin-tone variation
+- under-eye texture
+- displaced hair
+- ordinary wrinkles
+- mild posture imbalance
+- imperfect gaze
+- slightly awkward hand position
+- natural clothing wrinkles
+
+Environmental imperfections may include:
+
+- localized dirt
+- moisture
+- wear
+- compressed foliage
+- bent objects
+- disturbed fabric
+- imperfect spacing
+- partial obstruction
+- uneven surfaces
+- visually ambiguous shadowed areas
+
+Do not add every imperfection simultaneously.
+
+
+FAKE REALISM TO AVOID
+
+Do not simulate realism using:
+
+- extreme grain
+- fake dust overlays
+- arbitrary scratches
+- heavy chromatic aberration
+- severe JPEG damage
+- random blur
+- random skin spots
+- meaningless dirt
+- repeated noise textures
+- dramatic lens damage
+- excessive motion blur
+- distorted anatomy
+- deliberately ugly framing
+- random clutter
+- artificial aging filters
+
+Realism must arise from coherent physical causes.
+
+
+POST-PROCESSING RESTRICTIONS
+
+The final photograph must appear minimally processed.
+
+Avoid:
+
+- beauty filters
+- skin smoothing
+- face reshaping
+- eye enlargement
+- eye enhancement
+- iris sharpening
+- sclera whitening
+- artificial eye gloss
+- artificial catchlight enhancement
+- digital makeup
+- artificial blush
+- lip enhancement
+- teeth whitening
+- hair cleanup
+- aggressive HDR
+- lifted shadows
+- cinematic LUTs
+- orange-and-teal grading
+- heavy sharpening
+- excessive clarity
+- artificial glow
+- bloom
+- vignetting
+- fake film grain
+- professional color grading
+- portrait-mode blur
+- commercial retouching
+- glossy editorial finishing
+- social-media beauty processing
+- artificial face restoration
+
+Do not retouch the face more strongly than the rest of the image.
+
+
+STRICT AI-SIGNATURE SUPPRESSION
+
+The final image must not contain:
+
+- a polished beauty portrait hidden inside a casual scene
+- two perfectly bright expressive eyes
+- glassy eyes
+- glossy doll eyes
+- luminous irises
+- pure white sclera
+- identical catchlights
+- decorative eye reflections
+- perfect facial symmetry
+- waxy skin
+- porcelain cheeks
+- uniformly warm facial skin
+- a face lit independently from the environment
+- perfectly arranged hair
+- an artificial flyaway halo
+- decorative environmental framing
+- a clean opening around the face
+- professional portrait bokeh
+- perfect subject separation
+- a flattering model pose in a difficult location
+- passive decorative hands
+- clothing unaffected by contact
+- dark materials with unlimited detail
+- universal sharpness
+- equal image quality across every layer
+- unlimited shadow detail
+- random branches or environmental lines
+- repeated foliage
+- cloned objects
+- floating elements
+- impossible reflections
+- inconsistent shadows
+- malformed hands
+- fused fingers
+- extra limbs
+- artificial facial restoration
+- overly clean professional image quality
+- cinematic polish
+- staged candidness
+
+
+STRICT NEGATIVE REQUIREMENTS
+
+Do not create:
+
+CGI, 3D rendering, digital illustration, painting, anime, concept art, game-engine graphics, glossy editorial photography, fashion-campaign imagery, beauty advertising, stock-photo perfection, cinematic portrait photography, doll-like people, mannequin expressions, porcelain skin, plastic skin, waxy surfaces, rubber-like skin, fake pores, random AI stains, glowing eyes, glassy eyes, wet doll eyes, crystal irises, artificial eye gloss, perfectly white sclera, exaggerated HDR, universal sharpness, professional portrait bokeh, artificial depth of field, perfect symmetry, malformed hands, fused fingers, extra fingers, missing fingers, duplicated limbs, impossible anatomy, floating objects, merged objects, inconsistent reflections, impossible shadows, repeated background details, cloned foliage, disconnected branches, prominent nonsensical text, added captions, subtitles, logos, watermarks, borders, or interface elements.
+
+
+FINAL EXECUTION RULES
+
+Generate one single ultra-photorealistic image based on the SCENE IDEA.
+
+The result must look like an authentic, minimally processed, casually captured smartphone photograph.
+
+Keep the important subject recognizable.
+
+Keep the central face visible when required, but do not convert facial visibility into beauty optimization.
+
+The eyes must look biological, naturally embedded, slightly moist but not glossy, anatomically integrated, asymmetrical, and subdued by the real lighting.
+
+The upper eyelids must naturally overlap the irises.
+
+The sclera must remain off-white.
+
+Iris detail must remain restrained.
+
+Catchlights must be small, unequal, and physically caused.
+
+One eye may be slightly:
+
+- darker
+- softer
+- more narrowed
+- less reflective
+- lower in contrast
+
+Do not selectively brighten or sharpen either eye.
+
+The expression must feel lifelike, mentally present, subtly transitional, situationally appropriate, and connected to the body posture.
+
+Do not create a seductive, commercial, vacant, or model-like expression by default.
+
+Skin must have:
+
+- natural uneven tone
+- restrained pores
+- mild redness
+- ordinary under-eye texture
+- anatomical tonal transitions
+- no beauty-filter smoothing
+
+Hair must have:
+
+- irregular grouped strands
+- uneven volume
+- partial merging in shadow
+- natural flyaways
+- realistic environmental interaction
+- no perfectly arranged frame around the face
+
+Hands must be anatomically correct and functionally connected to the action.
+
+The pose must arise from actual balance, space, gravity, pressure, and activity rather than portrait aesthetics.
+
+Lighting must come only from real physical sources.
+
+The face must follow the same exposure and color system as the environment.
+
+Allow:
+
+- uneven illumination
+- slight shadow loss
+- restrained environmental color reflection
+- mild digital noise
+- modest highlight clipping
+- dark-tone compression
+- slight autofocus uncertainty
+- realistic smartphone softness
+- reduced micro-detail in darkness
+- ordinary handheld imperfection
+
+Do not make the image severely blurry, noisy, corrupted, or intentionally low quality.
+
+The environment must remain:
+
+- structurally coherent
+- physically connected
+- lived-in
+- imperfect
+- contextually detailed
+- not artificially cleaned
+- not uniformly blurred
+
+Environmental text may appear only when it naturally belongs to real objects and must follow perspective, distance, lighting, and focus.
+
+Use a realistic visual information budget.
+
+Do not resolve every:
+
+- pore
+- eyelash
+- iris line
+- hair strand
+- fabric thread
+- leaf
+- background object
+- sign
+- shadow
+
+with equal clarity.
+
+Allow some regions to remain:
+
+- clear
+- moderately detailed
+- slightly soft
+- underexposed
+- compressed
+- partially merged
+- visually ambiguous
+
+The camera must capture the entire event as one physically connected scene.
+
+Do not create:
+
+“a beautiful person perfectly photographed inside a decorative location.”
+
+Create:
+
+“a real person casually photographed with an ordinary phone inside an existing real environment, with natural human eyes, lifelike expression, imperfect available light, slightly uneven technical quality, coherent anatomy, believable materials, real physical contact, ordinary background details, and no obvious AI-generated beauty optimization.”
+
+
+FINAL QUALITY TARGET
+
+The final image must feel:
+
+- real
+- ordinary
+- spontaneous
+- physically possible
+- minimally processed
+- naturally imperfect
+- recognizably human
+- environmentally integrated
+- slightly limited by smartphone capture
+- free from cinematic polish
+- free from beauty-filter aesthetics
+- free from glassy eyes
+- free from universal sharpness
+- free from artificial portrait composition
+- free from obvious AI signatures
+
+The image should feel as though the photographer encountered the moment rather than designed it.
+
+Natural photographic credibility is more important than beauty, symmetry, technical perfection, dramatic lighting, maximum detail, or aesthetic composition.
