@@ -60,11 +60,11 @@ async function readKnowledge(filename, maxChars) {
 
 async function getMentorInstructions() {
   const [routing, system, practice, method, core] = await Promise.all([
-    readKnowledge("QUESTION_ROUTING_AND_FAQ.md", 11000),
-    readKnowledge("SYSTEM_PROMPT_RU.md", 6000),
-    readKnowledge("PRACTICE_FIRST_PROTOCOL.md", 4200),
-    readKnowledge("METHOD_AND_WORKFLOW.md", 3500),
-    readKnowledge("CORE_OF_THE_COURSE.md", 4800)
+    readKnowledge("QUESTION_ROUTING_AND_FAQ.md", 9000),
+    readKnowledge("SYSTEM_PROMPT_RU.md", 3500),
+    readKnowledge("PRACTICE_FIRST_PROTOCOL.md", 3000),
+    readKnowledge("METHOD_AND_WORKFLOW.md", 2500),
+    readKnowledge("CORE_OF_THE_COURSE.md", 3500)
   ]);
   return [
     "Ты — голосовой наставник Ferixdi AI, не сам Ferixdi лично.",
