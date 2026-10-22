@@ -1,0 +1,25 @@
+Как повторить любое видео через AI за 15 кредитов. Краткая инструкция
+
+Сначала скачиваем исходное видео:
+
+* TikTok: https://tikvideo.app/ru
+* Instagram: https://saveclip.app/ru10/download-video-instagram
+* YouTube: https://yt1d.net/ru/
+
+1. Заходим в Google Gemini: https://gemini.google.com
+   или Google AI Studio: https://aistudio.google.com
+
+2. Загружаем скачанное исходное видео + вставляем наш мастер-промпт.
+
+3. Пишем: «Проанализируй моё видео и выдай готовый промпт для его генерации, строго соблюдая инструкцию.»
+
+4. По описанию первого кадра создаём реалистичное стартовое фото.
+   Для этого можно использовать GPT Image 2.5: https://chatgpt.com/images
+   или Nano Banana 2.
+
+5. Загружаем стартовое фото + video prompt в Omni 1.1 и генерируем ролик.
+
+Стоимость генерации в Omni 1.1: 15 кредитов (10 секунд).
+
+Схема:
+Скачиваем видео → Gemini / AI Studio → video prompt → GPT Image 2.5 или Nano Banana 2 → стартовое фото → Omni 1.1 → готовый ролик.
