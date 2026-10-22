@@ -125,9 +125,8 @@ app.post("/api/knowledge-search", checkOrigin, rateLimit, verifyAccess, async (r
       const lower = chunk.text.toLowerCase();
       let score = 0;
       for (const term of queryTerms) {
-        const escaped = term.replace(/[.*+?^{}()|[\\]\\\\]/g, "\\\\app.get("/api/health", (_req, res) => res.json({ ok: true, service: "ferixdi-ai-voice-mentor" }));");
-        const matches = lower.match(new RegExp(escaped, "giu"));
-        if (matches) score += Math.min(matches.length, 5) * (term.length >= 7 ? 2 : 1);
+        const count = lower.split(term).length - 1;
+        if (count > 0) score += Math.min(count, 5) * (term.length >= 7 ? 2 : 1);
       }
       return { ...chunk, score };
     }).filter(x => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
