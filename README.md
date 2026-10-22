@@ -6,6 +6,7 @@
 - `knowledge/SYSTEM_PROMPT_RU.md` — роль, голос и правила ответа наставника.
 - `knowledge/METHOD_AND_WORKFLOW.md` — производственный цикл AI-Reels.
 - `knowledge/MENTORING_AND_DISCIPLINE.md` — работа с провалами, мотивацией и анализом.
+- `knowledge/PRACTICE_FIRST_PROTOCOL.md` — обязательный режим: сначала практика, вопросы о сделанном, диагностика роликов и копирование проверенных креативов.
 - `knowledge/CURRICULUM_MAP.md` — карта направлений курса и источников.
 - `knowledge/GOOGLE_FLOW_OMNI_NANO_BANANA.md` — рабочая справка по инструментам с явным разделением подтверждённого и требующего проверки.
 - `knowledge/VOICE_MENTOR_TECH_SPEC.md` — архитектура приложения на OpenAI API.
