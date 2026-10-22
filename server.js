@@ -223,6 +223,30 @@ app.post("/api/knowledge-search", checkOrigin, knowledgeRateLimit, verifyAccess,
 
 app.get("/api/health", (_req, res) => res.json({ ok: true, service: "ferixdi-ai-voice-mentor" }));
 
+app.post("/api/podcast-answer", checkOrigin, knowledgeRateLimit, verifyAccess, async (req, res) => {
+  const query = String(req.body?.query || "").slice(0, 1200).toLowerCase().replace(/ё/g, "е");
+  const markdown = await readKnowledge("PODCAST_INTERVIEW_FINAL.md", 30000);
+  const sections = markdown.split(/(?=^## \\d+\\.)/m);
+  const pairs = sections.map(section => {
+    const hostMatch = section.match(/\\*\\*Ведущий:\\*\\*\\s*([\\s\\S]*?)(?=\\n\\s*\\n\\*\\*Наставник:\\*\\*)/i);
+    const mentorMatch = section.match(/\\*\\*Наставник:\\*\\*\\s*([\\s\\S]*?)(?=\\n\\s*\\n## |\\n\\s*\\nПринципы голоса|$)/i);
+    return hostMatch && mentorMatch ? { question: hostMatch[1].trim(), answer: mentorMatch[1].trim() } : null;
+  }).filter(Boolean);
+  const stop = new Set(["это","как","что","где","когда","почему","если","или","для","про","мне","меня","мой","моя","мои","мы","вы","они","уже","есть","нет","можно","нужно","надо","сделать","делать","этот","эта","эти","там","тут","его","ее","вот","так","быть","будет","был","была","были"]);
+  const tokens = value => [...new Set((value.match(/[a-zа-я0-9]{3,}/giu) || []).filter(word => !stop.has(word)))];
+  const queryTokens = tokens(query);
+  if (!queryTokens.length || !pairs.length) return res.json({ matched: false });
+  const ranked = pairs.map(pair => {
+    const questionTokens = tokens(pair.question.toLowerCase().replace(/ё/g, "е"));
+    const hits = queryTokens.filter(token => questionTokens.some(word => word === token || (token.length >= 5 && word.length >= 5 && (token.includes(word) || word.includes(token)))));
+    return { ...pair, hits: hits.length, score: hits.length / Math.max(1, Math.min(queryTokens.length, questionTokens.length)) };
+  }).sort((a, b) => b.score - a.score || b.hits - a.hits);
+  const best = ranked[0], second = ranked[1];
+  if (!best || best.hits < 2 || best.score < 0.28 || (second && best.score - second.score < 0.06 && best.hits < 4)) return res.json({ matched: false });
+  res.set("Cache-Control", "no-store");
+  return res.json({ matched: true, question: best.question, answer: best.answer });
+});
+
 app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (req, res) => {
   if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === "sk-replace-me") {
     return res.status(503).json({ error: "На сервере ещё не настроен OPENAI_API_KEY." });
