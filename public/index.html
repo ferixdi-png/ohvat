@@ -50,6 +50,7 @@
     const errorEl = document.querySelector("#error");
     const audioEl = document.querySelector("#remoteAudio");
     let pc = null, stream = null, channel = null, connecting = false, connected = false;
+    const handledToolCalls = new Set();
     let accessCode = sessionStorage.getItem("ferixdi_mentor_access_code") || "";
 
     function status(text) { statusEl.textContent = text; }
@@ -102,6 +103,27 @@
           if (data.type === "conversation.item.input_audio_transcription.completed") {
             const transcript = String(data.transcript || "").trim();
             if (!transcript || !channel || channel.readyState !== "open") return;
+            sendEvent({ type: "response.create", response: { output_modalities: ["audio"] } });
+          }
+          if (data.type === "response.output_item.done" && data.item?.type === "function_call" && data.item?.name === "search_course_knowledge") {
+            const callId = data.item.call_id;
+            if (!callId || handledToolCalls.has(callId) || !channel || channel.readyState !== "open") return;
+            handledToolCalls.add(callId);
+            let output = { results: [], note: "Поиск по базе временно недоступен. Не выдумывай точный ответ; направь ученика к уроку обучения или Ferixdi @ferixdiii." };
+            try {
+              let args = {};
+              try { args = JSON.parse(data.item.arguments || "{}"); } catch {}
+              const response = await fetch("/api/knowledge-search", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", ...(accessCode ? { "x-mentor-access-code": accessCode } : {}) },
+                body: JSON.stringify({ query: String(args.query || "").slice(0, 1200) })
+              });
+              if (response.ok) {
+                const found = await response.json();
+                output = { results: (found.results || []).slice(0, 4).map(item => ({ source: item.source, text: String(item.text || "").slice(0, 1800), score: item.score })) };
+              }
+            } catch {}
+            sendEvent({ type: "conversation.item.create", item: { type: "function_call_output", call_id: callId, output: JSON.stringify(output).slice(0, 9000) } });
             sendEvent({ type: "response.create", response: { output_modalities: ["audio"] } });
           }
           if (data.type === "response.audio.started" || data.type === "output_audio_buffer.started") {
