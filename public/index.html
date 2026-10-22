@@ -79,21 +79,6 @@
           if (accessCode) sessionStorage.setItem("ferixdi_mentor_access_code", accessCode);
         }
         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        const tokenResponse = await fetch("/api/session", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", ...(accessCode ? { "x-mentor-access-code": accessCode } : {}) },
-          body: "{}"
-        });
-        const tokenData = await tokenResponse.json().catch(() => ({}));
-        if (!tokenResponse.ok) {
-          if (tokenResponse.status === 401) {
-            sessionStorage.removeItem("ferixdi_mentor_access_code");
-            sessionStorage.removeItem("ferixdi_access_prompted");
-            accessCode = "";
-          }
-          throw new Error(tokenData.error || "Не удалось создать голосовую сессию.");
-        }
-
         pc = new RTCPeerConnection();
         pc.addTrack(stream.getAudioTracks()[0], stream);
         pc.ontrack = event => { audioEl.srcObject = event.streams[0]; audioEl.play().catch(() => {}); };
@@ -150,13 +135,24 @@
 
         const offer = await pc.createOffer();
         await pc.setLocalDescription(offer);
-        const sdpResponse = await fetch("https://api.openai.com/v1/realtime?model=gpt-realtime-2.1", {
-          method: "POST", body: offer.sdp,
-          headers: { Authorization: "Bearer " + tokenData.client_secret, "Content-Type": "application/sdp" }
+        const sdpResponse = await fetch("/api/session", {
+          method: "POST",
+          body: offer.sdp,
+          headers: { "Content-Type": "application/sdp", ...(accessCode ? { "x-mentor-access-code": accessCode } : {}) }
         });
         if (!sdpResponse.ok) {
           const details = await sdpResponse.text();
-          throw new Error("OpenAI не принял голосовое подключение. Проверь доступ к Realtime API и модель. " + details.slice(0, 180));
+          let message = "Не удалось подключить голосовой сервис.";
+          try {
+            const parsed = JSON.parse(details);
+            if (parsed?.error) message = parsed.error;
+          } catch {}
+          if (sdpResponse.status === 401) {
+            sessionStorage.removeItem("ferixdi_mentor_access_code");
+            sessionStorage.removeItem("ferixdi_access_prompted");
+            accessCode = "";
+          }
+          throw new Error(message);
         }
         await pc.setRemoteDescription({ type: "answer", sdp: await sdpResponse.text() });
         status("Почти на связи…");
