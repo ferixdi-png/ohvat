@@ -102,18 +102,6 @@
           if (data.type === "conversation.item.input_audio_transcription.completed") {
             const transcript = String(data.transcript || "").trim();
             if (!transcript || !channel || channel.readyState !== "open") return;
-            status("Подбираю материал курса…");
-            try {
-              const headers = { "Content-Type": "application/json", ...(accessCode ? { "x-mentor-access-code": accessCode } : {}) };
-              const found = await fetch("/api/knowledge-search", {
-                method: "POST", headers, body: JSON.stringify({ query: transcript })
-              });
-              const result = await found.json().catch(() => ({}));
-              // Realtime conversation items do not support the "developer" role.
-              // Course guidance is included in the session instructions; do not inject hidden messages here.
-            } catch (e) {
-              console.warn("Knowledge lookup failed", e);
-            }
             sendEvent({ type: "response.create", response: { output_modalities: ["audio"] } });
           }
           if (data.type === "response.audio.started" || data.type === "output_audio_buffer.started") {
