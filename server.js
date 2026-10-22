@@ -226,10 +226,10 @@ app.get("/api/health", (_req, res) => res.json({ ok: true, service: "ferixdi-ai-
 app.post("/api/podcast-answer", checkOrigin, knowledgeRateLimit, verifyAccess, async (req, res) => {
   const query = String(req.body?.query || "").slice(0, 1200).toLowerCase().replace(/ё/g, "е");
   const markdown = await readKnowledge("PODCAST_INTERVIEW_FINAL.md", 30000);
-  const sections = markdown.split(/(?=^## \\d+\\.)/m);
+  const sections = markdown.split(/(?=^## \d+\.)/m);
   const pairs = sections.map(section => {
-    const hostMatch = section.match(/\\*\\*Ведущий:\\*\\*\\s*([\\s\\S]*?)(?=\\n\\s*\\n\\*\\*Наставник:\\*\\*)/i);
-    const mentorMatch = section.match(/\\*\\*Наставник:\\*\\*\\s*([\\s\\S]*?)(?=\\n\\s*\\n## |\\n\\s*\\nПринципы голоса|$)/i);
+    const hostMatch = section.match(/\*\*Ведущий:\*\*\s*([\s\S]*?)(?=\n\s*\n\*\*Наставник:\*\*)/i);
+    const mentorMatch = section.match(/\*\*Наставник:\*\*\s*([\s\S]*?)(?=\n\s*\n## |\n\s*\nПринципы голоса|$)/i);
     return hostMatch && mentorMatch ? { question: hostMatch[1].trim(), answer: mentorMatch[1].trim() } : null;
   }).filter(Boolean);
   const stop = new Set(["это","как","что","где","когда","почему","если","или","для","про","мне","меня","мой","моя","мои","мы","вы","они","уже","есть","нет","можно","нужно","надо","сделать","делать","этот","эта","эти","там","тут","его","ее","вот","так","быть","будет","был","была","были"]);
