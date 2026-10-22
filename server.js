@@ -166,8 +166,8 @@ app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (req, res) 
       max_output_tokens: 700
     };
     const form = new FormData();
-    form.set("sdp", new Blob([offerSdp], { type: "application/sdp" }), "offer.sdp");
-    form.set("session", new Blob([JSON.stringify(session)], { type: "application/json" }), "session.json");
+    form.set("sdp", offerSdp);
+    form.set("session", JSON.stringify(session));
     const response = await fetch("https://api.openai.com/v1/realtime/calls", {
       method: "POST",
       headers: { Authorization: "Bearer " + process.env.OPENAI_API_KEY },
