@@ -228,21 +228,34 @@ app.post("/api/podcast-answer", checkOrigin, knowledgeRateLimit, verifyAccess, a
   const markdown = await readKnowledge("PODCAST_INTERVIEW_FINAL.md", 30000);
   const sections = markdown.split(/(?=^## \d+\.)/m);
   const pairs = sections.map(section => {
+    const headingMatch = section.match(/^##\s*\d+\.\s*(.+)$/m);
     const hostMatch = section.match(/\*\*Ведущий:\*\*\s*([\s\S]*?)(?=\n\s*\n\*\*Наставник:\*\*)/i);
     const mentorMatch = section.match(/\*\*Наставник:\*\*\s*([\s\S]*?)(?=\n\s*\n## |\n\s*\nПринципы голоса|$)/i);
-    return hostMatch && mentorMatch ? { question: hostMatch[1].trim(), answer: mentorMatch[1].trim() } : null;
+    return hostMatch && mentorMatch ? {
+      title: headingMatch ? headingMatch[1].trim() : "",
+      question: hostMatch[1].trim(),
+      answer: mentorMatch[1].trim()
+    } : null;
   }).filter(Boolean);
-  const stop = new Set(["это","как","что","где","когда","почему","если","или","для","про","мне","меня","мой","моя","мои","мы","вы","они","уже","есть","нет","можно","нужно","надо","сделать","делать","этот","эта","эти","там","тут","его","ее","вот","так","быть","будет","был","была","были"]);
+  const stop = new Set(["это","как","что","где","когда","почему","если","или","для","про","мне","меня","мой","моя","мои","мы","вы","они","уже","есть","нет","можно","нужно","надо","сделать","делать","этот","эта","эти","там","тут","его","ее","вот","так","быть","будет","был","была","были","какие","какой","какая"]);
   const tokens = value => [...new Set((value.match(/[a-zа-я0-9]{3,}/giu) || []).filter(word => !stop.has(word)))];
   const queryTokens = tokens(query);
   if (!queryTokens.length || !pairs.length) return res.json({ matched: false });
   const ranked = pairs.map(pair => {
-    const questionTokens = tokens(pair.question.toLowerCase().replace(/ё/g, "е"));
+    // Match against the section title as well as the host's spoken question.
+    // This allows short questions such as "Какие результаты?" to match section 2.
+    const questionTokens = tokens((pair.title + " " + pair.question).toLowerCase().replace(/ё/g, "е"));
     const hits = queryTokens.filter(token => questionTokens.some(word => word === token || (token.length >= 5 && word.length >= 5 && (token.includes(word) || word.includes(token)))));
-    return { ...pair, hits: hits.length, score: hits.length / Math.max(1, Math.min(queryTokens.length, questionTokens.length)) };
-  }).sort((a, b) => b.score - a.score || b.hits - a.hits);
+    const score = hits.length / Math.max(1, Math.min(queryTokens.length, questionTokens.length));
+    const exactTitleMatch = Boolean(pair.title) && queryTokens.every(token =>
+      tokens(pair.title.toLowerCase().replace(/ё/g, "е")).some(word => word === token || (token.length >= 5 && word.length >= 5 && (token.includes(word) || word.includes(token))))
+    );
+    return { ...pair, hits: hits.length, score, exactTitleMatch };
+  }).sort((a, b) => Number(b.exactTitleMatch) - Number(a.exactTitleMatch) || b.score - a.score || b.hits - a.hits);
   const best = ranked[0], second = ranked[1];
-  if (!best || best.hits < 2 || best.score < 0.28 || (second && best.score - second.score < 0.06 && best.hits < 4)) return res.json({ matched: false });
+  const shortSpecificMatch = best && queryTokens.length <= 2 && best.hits >= 1 &&
+    /(результат|ученик|подписчик|обучени|покупк|промпт|охват|иде|регулярност|монетизац|начать|с нуля)/i.test(query);
+  if (!best || (!shortSpecificMatch && (best.hits < 2 || best.score < 0.28 || (second && best.score - second.score < 0.06 && best.hits < 4)))) return res.json({ matched: false });
   res.set("Cache-Control", "no-store");
   return res.json({ matched: true, question: best.question, answer: best.answer });
 });
