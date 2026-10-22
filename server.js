@@ -103,8 +103,13 @@ async function getKnowledgeChunks() {
     }
     const staticFiles = ["QUESTION_ROUTING_AND_FAQ.md", "COURSE_MODULE_MAP.md", "METHOD_AND_WORKFLOW.md", "PRACTICE_FIRST_PROTOCOL.md", "CORE_OF_THE_COURSE.md", "GOOGLE_FLOW_OMNI_NANO_BANANA.md"];
     for (const file of staticFiles) {
-      const text = await readKnowledge(file, 30000);
-      if (text) chunks.push({ source: file, text: text.slice(0, 3500) });
+      const text = await readKnowledge(file, 50000);
+      const chunkSize = 3000;
+      const overlap = 250;
+      for (let offset = 0; offset < text.length; offset += chunkSize - overlap) {
+        const excerpt = text.slice(offset, offset + chunkSize).trim();
+        if (excerpt.length > 40) chunks.push({ source: file, text: excerpt });
+      }
     }
     async function walk(dir, relative = "") {
       let entries = [];
