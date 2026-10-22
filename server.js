@@ -256,7 +256,7 @@ app.post("/api/session", checkOrigin, rateLimit, verifyAccess, async (req, res) 
           additionalProperties: false
         }
       }],
-      tool_choice: "auto",
+      tool_choice: "none",
       max_output_tokens: 700
     };
     const form = new FormData();
