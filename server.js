@@ -90,18 +90,15 @@ async function getKnowledgeChunks() {
         const rel = path.join(relative, entry.name);
         const full = path.join(dir, entry.name);
         if (entry.isDirectory()) await walk(full, rel);
-        else if (entry.isFile() && /\\.(txt|md)$/i.test(entry.name)) {
+        else if (entry.isFile() && /\.(txt|md)$/i.test(entry.name)) {
           let text = "";
           try { text = await fs.readFile(full, "utf8"); } catch { continue; }
-          const blocks = text.split(/\\n(?=#{1,3} )/);
-          let current = "";
-          for (const block of blocks) {
-            if ((current + "\\n\\n" + block).length > 3000 && current.trim()) {
-              chunks.push({ source: rel, text: current.trim().slice(0, 3000) });
-              current = block;
-            } else current += (current ? "\\n\\n" : "") + block;
+          const chunkSize = 2600;
+          const overlap = 250;
+          for (let offset = 0; offset < text.length; offset += chunkSize - overlap) {
+            const excerpt = text.slice(offset, offset + chunkSize).trim();
+            if (excerpt.length > 40) chunks.push({ source: rel, text: excerpt });
           }
-          if (current.trim()) chunks.push({ source: rel, text: current.trim().slice(0, 3000) });
         }
       }
     }
